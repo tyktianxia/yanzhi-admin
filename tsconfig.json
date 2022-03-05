@@ -1,0 +1,43 @@
+// {
+//   "compilerOptions": {
+//     "module": "esnext",
+//     "lib": ["es2015"],
+//     "strict": true, //这样可以对`this`上的数据属性进行严格的推断，否则总是被视为any类型
+//     "noImplicitAny": true,
+//     "removeComments": true,
+//     "preserveConstEnums": true,
+//     "sourceMap": true,
+//     "isolatedModules": true,
+//     "types": ["vite/client"],
+//     "baseUrl": ".",
+//     "paths": {
+//       "@": ["src"],
+//       "@/*": ["src/*"],
+//       "vue": ["node_modules/vue/dist/vue.d.ts"],
+//       "vue-router": ["node_modules/vue-router/dist/vue-router.d.ts"]
+//     },
+//     "moduleResolution": "node"
+//   },
+//   // "include": [
+//   //   "src/**/*",
+//   //   "shims.d.ts" //**/递归匹配任意子目录
+//   // ],
+//   "exclude": ["node_modules"]
+// }
+
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "allowJs": false,
+    // 这样就可以对 `this` 上的数据属性进行更严格的推断
+    "strict": true,
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths":{
+      "@": ["src"],
+      "@/*": ["src/*"],
+    }
+  }
+}
