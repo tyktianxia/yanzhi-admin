@@ -13,6 +13,7 @@
 </template>
 
 <script lang="ts" setup>
+import { ElCard } from "element-plus";
 const props = defineProps<{
   cardData: {
     name: string;
@@ -25,5 +26,5 @@ const clickBtn = () => {
   emit("click2", props.cardData.name);
 };
 
-defineExpose({})
+defineExpose({});
 </script>

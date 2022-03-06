@@ -9,3 +9,7 @@
     <el-button>中文</el-button>
   </el-row>
 </template>
+
+<script lang="ts" setup>
+import {ElButton} from "element-plus"
+</script>

@@ -8,7 +8,7 @@ const router = VueRouter.createRouter({
 });
 
 router.beforeEach((to) => {
-  console.log(to, "beforeEach");
-  console.log(to.meta, "beforeEach tometa");
+  // console.log(to, "beforeEach");
+  // console.log(to.meta, "beforeEach tometa");
 });
 export default router;

@@ -1,8 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { RouteRecordRaw } from "vue-router";
 
-const About = { template: "<div>About</div>" };
-
 
 const routes: RouteRecordRaw[] = [
   {
@@ -31,7 +29,7 @@ const routes: RouteRecordRaw[] = [
       showFlag: true,
       uuid: uuidv4(),
     },
-    component: () => import("@/components/layout.vue"),
+    component: () => import("@/components/layout/yLayout.vue"),
     children: [
       {
         path: "one",
@@ -64,7 +62,7 @@ const routes: RouteRecordRaw[] = [
       showFlag: true,
       uuid: uuidv4(),
     },
-    component: () => import("@/components/layout.vue"),
+    component: () => import("@/components/layout/yLayout.vue"),
     children: [
       {
         path: "test1",
@@ -81,7 +79,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/about",
     name: "ABOUT",
-    component: About,
+    component: () => import("@/views/about.vue"),
     meta: {
       icon: 1,
       showFlag: true,
@@ -102,6 +100,29 @@ const routes: RouteRecordRaw[] = [
     path: "/:pathMatch(.*)",
     component: () => import("@/views/404.vue"),
     meta: {},
+  },
+  {
+    path:"/echarts",
+    name: "图表",
+    redirect: "/echarts/echarts1",
+    meta: {
+      icon: 1,
+      showFlag: true,
+      uuid: uuidv4(),
+    },
+    component: () => import("@/components/layout/yLayout.vue"),
+    children: [
+      {
+        path: "echarts1",
+        name: "echarts1",
+        meta: {
+          icon: 1,
+          showFlag: true,
+          uuid: uuidv4(),
+        },
+        component: () => import("@/views/echarts/echarts1.vue"),
+      },
+    ],
   },
 ];
 
