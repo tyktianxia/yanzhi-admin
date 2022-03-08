@@ -1,30 +1,34 @@
 <template>
-  <div class="common-layout">
-    <el-container>
-      <el-header>
-        <yHeaderVue></yHeaderVue>
-      </el-header>
-      <div class="subContainer">
-        <el-container>
-          <el-aside width="240px">
-            <YanzhiAside></YanzhiAside>
-          </el-aside>
-          <el-main>
-            <router-view></router-view>
-          </el-main>
-        </el-container>
-      </div>
-      <!-- <el-footer>f</el-footer> -->
-    </el-container>
-  </div>
+  <router-view v-if="route.path === '/login'"></router-view>
+
+  <yanzhiVue v-else></yanzhiVue>
 </template>
 
 <script lang="ts" setup>
-import { ElContainer, ElFooter, ElMain, ElHeader, ElAside } from "element-plus";
-import yHeaderVue from "./components/layout/yHeader.vue";
-import yMainVue from "./components/layout/yMain.vue";
-import yAsideVue from "./components/layout/yAside.vue";
-import YanzhiAside from "./components/layout/yanzhi-aside.vue";
+import { useRoute } from "vue-router";
+import yanzhiVue from "./views/yanzhi.vue";
+import { userStore } from "@/store/index";
+import { onMounted } from "vue";
+import { UserInfo } from "@/types/userInfo"
+let route = useRoute();
+
+const store = userStore();
+console.log(store.userInfo.name);
+
+interface Yobject {
+  [key: string]: string;
+}
+onMounted(() => {
+  let url = window.location.href;
+  let arr = url.split("#")[1].split("&");
+  let result:UserInfo = arr.reduce((obj, item) => {
+    let arr4 = item.split("=");
+    obj[arr4[0]] = arr4[1];
+    return obj;
+  }, {});
+
+  store.setUserInfo(result)
+});
 </script>
 
 <style scoped>

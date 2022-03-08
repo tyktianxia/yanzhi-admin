@@ -9,10 +9,13 @@ import * as echarts from "echarts"
 import "element-plus/dist/index.css";
 
 import router from "./router/index"
+import { createPinia } from "pinia";
 
 const app = createApp(App);
 
 app.use(router)
+app.use(createPinia())
+
 
 app.config.globalProperties.$echarts = echarts;
 

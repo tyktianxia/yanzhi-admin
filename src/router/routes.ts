@@ -124,6 +124,16 @@ const routes: RouteRecordRaw[] = [
       },
     ],
   },
+  {
+    path: "/login",
+    name: "login",
+    component: () => import("@/views/login.vue"),
+    meta: {
+      icon: 1,
+      showFlag: false,
+      uuid: uuidv4(),
+    },
+  },
 ];
 
 // 处理routes生成侧边栏菜单，
