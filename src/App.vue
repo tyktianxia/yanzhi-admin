@@ -21,11 +21,12 @@ interface Yobject {
 onMounted(() => {
   let url = window.location.href;
   let arr = url.split("#")[1].split("&");
-  let result:UserInfo = arr.reduce((obj, item) => {
+  let result = arr.reduce((obj, item) => {
     let arr4 = item.split("=");
     obj[arr4[0]] = arr4[1];
+    // obj.id = '123123'
     return obj;
-  }, {});
+  }, {} as UserInfo);
 
   store.setUserInfo(result)
 });
