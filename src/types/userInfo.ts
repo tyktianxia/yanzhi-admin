@@ -1,5 +1,9 @@
+// export interface UserInfo {
+//     id: string,
+//     name?: string,
+//     tokenStr: string
+// }
+
 export interface UserInfo {
-    id: string,
-    name?: string,
-    tokenStr: string
+    [key:string]:any
 }

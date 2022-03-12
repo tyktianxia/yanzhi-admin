@@ -1,31 +1,10 @@
-import { defineStore } from 'pinia'
-import { UserInfo } from "@/types/userInfo"
 
+import { createPinia } from "pinia";
+import piniaPluginPersist from 'pinia-plugin-persist'
 
-interface UserStateType {
-  userInfo: UserInfo
-}
+const store = createPinia()
 
-export const userStore = defineStore("userInfo", {
-  state: (): UserStateType => {
-    return {
-      userInfo: {
-        name: '123',
-        id: "",
-        tokenStr: "",
-      }
-    }
-  },
-  getters: {
-    getTokenStr: (state) => state.userInfo.tokenStr,
-  },
-  actions: {
-    setTokenStr(tokenStr: string) {
-      this.userInfo.tokenStr = tokenStr;
-    },
-    setUserInfo(info: UserInfo) {
-      this.userInfo = info;
-    }
-  }
-})
+// 开始数据持久化
+store.use(piniaPluginPersist)
 
+export default store
