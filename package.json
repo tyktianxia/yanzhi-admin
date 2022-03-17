@@ -1,11 +1,12 @@
 {
-  "name": "vtest_v3_2",
+  "name": "yanzhi-admin",
   "private": true,
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start:express": "node ./server/bin/www"
   },
   "dependencies": {
     "@types/uuid": "^8.3.4",
@@ -16,7 +17,13 @@
     "pinia-plugin-persist": "^1.0.0",
     "uuid": "^8.3.2",
     "vue": "^3.2.25",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.12",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "pug": "2.0.0-beta11"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.2.0",

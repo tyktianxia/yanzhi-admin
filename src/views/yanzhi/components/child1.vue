@@ -4,7 +4,7 @@
 </template>
 
 <script setup lang="ts">
-const pros = defineProps({ test: Boolean });
+const pros = defineProps({ test: String });
 // const emit = defineEmits(["click"]);
 </script>
 
