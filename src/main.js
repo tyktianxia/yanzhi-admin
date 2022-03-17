@@ -10,7 +10,12 @@ import "element-plus/dist/index.css";
 import store from "@/store/index"
 import router from "./router/index"
 
+import {createDirectives} from "./directives/index"
+
 const app = createApp(App);
+
+// 挂载全局自定义指令
+createDirectives(app)
 
 app.use(router)
 app.use(store)
