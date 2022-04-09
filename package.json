@@ -9,6 +9,8 @@
     "start:express": "node ./server/bin/www"
   },
   "dependencies": {
+    "@sentry/tracing": "^6.19.6",
+    "@sentry/vue": "^6.19.6",
     "@types/uuid": "^8.3.4",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",

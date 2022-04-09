@@ -17,6 +17,7 @@ const store = userStore();
 
 
 let toLogin = () => {
+  // console.log(Window.a.b)
   setData("?id=456456465&tokenStr=yanzhihaoshuai");
   $router.push({
     path: "/home",
