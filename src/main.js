@@ -21,6 +21,7 @@ const app = createApp(App);
 
 app.config.globalProperties.$echarts = echarts;
 
+// https://www.bilibili.com/video/BV1UZ4y1p7MF?spm_id_from=333.337.search-card.all.click
 Sentry.init({
     app,
     dsn: "http://3cdd016aab4b427eb96916fcd8f13578@localhost:9000/2",
