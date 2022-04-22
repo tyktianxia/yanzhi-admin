@@ -54,7 +54,7 @@ const routes: RouteRecordRaw[] = [
     ],
   },
   {
-    path:"/test",
+    path: "/test",
     name: "Test",
     redirect: "/test/test1",
     meta: {
@@ -102,7 +102,7 @@ const routes: RouteRecordRaw[] = [
     meta: {},
   },
   {
-    path:"/echarts",
+    path: "/echarts",
     name: "图表",
     redirect: "/echarts/echarts1",
     meta: {
