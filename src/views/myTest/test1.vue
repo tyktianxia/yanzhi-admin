@@ -1,10 +1,11 @@
 <template>
   <h2>测试模块</h2>
-  <div>
-    <template v-for="item in cardList">
+  <div @click="testFather">
+    <template v-for="(item,index) in cardList" :key="index">
       <Child ref="lkjl" :cardData="item" @click2="clickBtn"></Child>
     </template>
     <Child2 ref="child2"></Child2>
+    <Child3 :testHtml="testHtml"></Child3>
   </div>
 </template>
 
@@ -13,6 +14,11 @@ import { isProxy, isReactive, isRef, reactive, Ref, shallowReactive, shallowRef,
 import { ref } from "vue";
 import Child from "./component/child.vue";
 import Child2 from "./component/child2.vue";
+import Child3 from "./component/child3.vue";
+
+import {ElButton} from "element-plus"
+
+
 let arr = [
   {
     name: "t1",
@@ -38,6 +44,16 @@ let oo = shallowRef(6)
 
 oo.value++
 console.log(oo.value)
+
+let testHtml = "<button onclick='testHtmlClick'>testHtml</button>"
+function testHtmlClick(){
+console.log('testHtmlButton')
+}
+
+function testFather(){
+  
+console.log('testFather')
+}
 
 </script>
 

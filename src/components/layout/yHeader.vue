@@ -10,10 +10,15 @@
 <script lang="ts" setup>
 import { ElHeader } from "element-plus";
 import { useRouter } from "vue-router";
-let $router = useRouter()
-let toLogout = ()=>{
-  $router.push('/login')
-}
+import { userStore } from "@/store/common";
+
+let $router = useRouter();
+const store = userStore();
+
+let toLogout = () => {
+  store.setUserInfo({});
+  $router.push("/login");
+};
 </script>
 
 <style scoped>
@@ -24,7 +29,7 @@ let toLogout = ()=>{
   align-items: center;
   justify-content: space-between;
 }
-.logoutBtn{
+.logoutBtn {
   cursor: pointer;
 }
 </style>

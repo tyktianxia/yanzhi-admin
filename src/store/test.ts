@@ -6,10 +6,16 @@ interface UserStateType {
   userInfo: UserInfo
 }
 
-export const userStore = defineStore("userInfo", {
+export const test = defineStore("test", {
   // 开启数据缓存
   persist: {
-    enabled: true
+    enabled: true,
+    strategies: [
+      {
+        key: 'yanzhi_test',
+        storage: localStorage,
+      }
+    ]
   },
   state: (): UserStateType => {
     return {

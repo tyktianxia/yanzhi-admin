@@ -24,6 +24,7 @@
     "pinia": "^2.0.11",
     "pinia-plugin-persist": "^1.0.0",
     "pug": "2.0.0-beta11",
+    "qs": "^6.10.3",
     "uuid": "^8.3.2",
     "vue": "^3.2.25",
     "vue-router": "^4.0.12"
