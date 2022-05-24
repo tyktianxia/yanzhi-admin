@@ -9,7 +9,7 @@
 <script lang="ts" setup>
 import { ElButton } from "element-plus";
 import { useRouter } from "vue-router";
-import { userStore } from "@/store/userStore";
+import { userStore } from "@/store/common";
 import { UserInfo } from "@/types/userInfo";
 
 let $router = useRouter();
