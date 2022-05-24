@@ -9,11 +9,11 @@
 <script lang="ts" setup>
 import { ElButton } from "element-plus";
 import { useRouter } from "vue-router";
-import { userStore } from "@/store/common";
+import { Common } from "@/store/common";
 import { UserInfo } from "@/types/userInfo";
 
 let $router = useRouter();
-const store = userStore();
+const CommonStore =Common();
 
 
 let toLogin = () => {
@@ -37,7 +37,7 @@ let setData = (str: string) => {
       return obj;
     }, {} as UserInfo);
 
-    store.setUserInfo(result);
+    CommonStore.setUserInfo(result);
   }
 };
 </script>

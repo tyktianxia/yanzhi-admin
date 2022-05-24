@@ -19,6 +19,6 @@ const btnclick = () => {
 onMounted(() => {
   console.log("app mounted");
   // 当前窗口关闭之后，数据即消失；
-  sessionStorage.setItem("test",456)
+  // sessionStorage.setItem("test",456)
 });
 </script>

@@ -10,13 +10,16 @@
 <script lang="ts" setup>
 import { ElHeader } from "element-plus";
 import { useRouter } from "vue-router";
-import { userStore } from "@/store/common";
+import { Common } from "@/store/common";
+import { Test } from "@/store/test";
 
 let $router = useRouter();
-const store = userStore();
+const CommonStore =Common();
+const TestStore = Test();
 
 let toLogout = () => {
-  store.setUserInfo({});
+  CommonStore.setUserInfo({});
+  console.log('logout', TestStore.testData)
   $router.push("/login");
 };
 </script>

@@ -6,17 +6,7 @@ interface UserStateType {
   userInfo: UserInfo
 }
 
-export const userStore = defineStore("common", {
-  // 开启数据缓存
-  persist: {
-    enabled: true,
-    strategies: [
-      {
-        key: 'yanzhi_common',
-        storage: localStorage,
-      }
-    ]
-  },
+export const Common = defineStore("common", {
   state: (): UserStateType => {
     return {
       userInfo: {
@@ -25,6 +15,16 @@ export const userStore = defineStore("common", {
         tokenStr: "",
       }
     }
+  },
+  // 开启数据缓存
+  persist: {
+    enabled: true,
+    strategies: [
+      {
+          key: 'common',
+          storage: localStorage,
+      }
+    ]
   },
   getters: {
     getTokenStr: (state) => state.userInfo.tokenStr,

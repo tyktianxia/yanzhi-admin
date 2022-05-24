@@ -1,41 +1,14 @@
 import { defineStore } from 'pinia'
-import { UserInfo } from "@/types/userInfo"
 
-
-interface UserStateType {
-  userInfo: UserInfo
-}
-
-export const test = defineStore("test", {
+export const Test = defineStore("test", {
   // 开启数据缓存
   persist: {
-    enabled: true,
-    strategies: [
-      {
-        key: 'yanzhi_test',
-        storage: localStorage,
-      }
-    ]
+    enabled: true
   },
-  state: (): UserStateType => {
+  state: () => {
     return {
-      userInfo: {
-        name: '',
-        id: "",
-        tokenStr: "",
-      }
+      testData:123
     }
   },
-  getters: {
-    getTokenStr: (state) => state.userInfo.tokenStr,
-  },
-  actions: {
-    setTokenStr(tokenStr: string) {
-      this.userInfo.tokenStr = tokenStr;
-    },
-    setUserInfo(info: UserInfo) {
-      this.userInfo = info;
-    }
-  }
 })
 
