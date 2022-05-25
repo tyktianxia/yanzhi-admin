@@ -9,18 +9,30 @@
 
 <script lang="ts" setup>
 import { ElHeader } from "element-plus";
+import { ElMessage, ElMessageBox } from 'element-plus'
 import { useRouter } from "vue-router";
 import { Common } from "@/store/common";
 import { Test } from "@/store/test";
 
 let $router = useRouter();
-const CommonStore =Common();
+const CommonStore = Common();
 const TestStore = Test();
 
 let toLogout = () => {
-  CommonStore.setUserInfo({});
-  console.log('logout', TestStore.testData)
-  $router.push("/login");
+  ElMessageBox.confirm(
+    '是否确认退出登录?',
+    '提示',
+    {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning',
+    }
+  )
+    .then(() => {
+      CommonStore.setUserInfo({});
+      console.log('logout', TestStore.testData)
+      $router.push("/login");
+    })
 };
 </script>
 
@@ -32,6 +44,7 @@ let toLogout = () => {
   align-items: center;
   justify-content: space-between;
 }
+
 .logoutBtn {
   cursor: pointer;
 }
