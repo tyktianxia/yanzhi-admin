@@ -4,6 +4,13 @@ import { RouteRecordRaw } from "vue-router";
 
 const routes: RouteRecordRaw[] = [
   {
+    path: "/",
+    redirect: "/login",
+    meta: {
+      uuid: uuidv4(),
+    },
+  },
+  {
     path: "/login",
     name: "login",
     component: () => import("@/views/login/login.vue"),
@@ -13,13 +20,6 @@ const routes: RouteRecordRaw[] = [
       uuid: uuidv4(),
     },
   },
-  // {
-  //   path: "/",
-  //   redirect: "/home",
-  //   meta: {
-  //     uuid: uuidv4(),
-  //   },
-  // },
   {
     path: "/home",
     name: "HOME",
@@ -139,6 +139,9 @@ const routes: RouteRecordRaw[] = [
 // 处理routes生成侧边栏菜单，
 // TODO:排序
 function handler(routes: RouteRecordRaw[]): RouteRecordRaw[] {
+  // let tarRoutes = routes.forEach(item=>{
+  //   item.meta.uuid = uuidv4()
+  // })
   return routes.filter((item) => {
     if (!item.meta?.showFlag) {
       return false;

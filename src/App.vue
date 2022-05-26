@@ -1,16 +1,18 @@
 <template>
-  <router-view v-if="route.path === '/login'"></router-view>
-
-  <yanzhiVue v-else></yanzhiVue>
+  <div v-if="route.path">
+    <router-view v-if="whitePaths.includes(route.path)"></router-view>
+    <yanzhiVue v-else></yanzhiVue>
+  </div>
 </template>
 
 <script lang="ts" setup>
 import yanzhiVue from "./views/yanzhi.vue";
 import { useRoute } from "vue-router";
-import { onMounted } from "vue";
+import { onMounted, reactive } from "vue";
 
 let route = useRoute();
 
+let whitePaths = reactive(["/", "/login"])
 
 onMounted(() => {
   console.log("app mounted");
