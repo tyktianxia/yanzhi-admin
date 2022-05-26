@@ -1,13 +1,17 @@
 <template>
   <div ref="tarRef">yahaha</div>
+  <el-input class="yz_form_input" v-model="username" placeholder="请输入用户名" :prefix-icon="User" clearable />
   <button @click="btnclick">click</button>
 </template>
 
 <script setup>
 import { useRouter } from "vue-router";
 import { onMounted, ref } from "vue";
+import { ElButton, ElForm, ElInput, ElFormItem } from "element-plus";
 let $router = useRouter();
 let tarRef = ref();
+let username = ref("")
+
 const btnclick = () => {
   $router.push({
     name: "ABOUT",
