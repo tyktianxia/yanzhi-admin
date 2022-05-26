@@ -97,14 +97,14 @@ const routes: RouteRecordRaw[] = [
     },
   },
   {
-    path: "/hahahha",
-    name: "HAHHAH",
+    path: "/learns",
+    name: "知识点",
     meta: {
       icon: 1,
       showFlag: true,
       uuid: uuidv4(),
     },
-    component: () => import("@/views/yanzhi/hahahha.vue"),
+    component: () => import("@/views/yanzhi/learns.vue"),
   },
   {
     path: "/:pathMatch(.*)",
