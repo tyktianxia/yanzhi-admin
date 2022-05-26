@@ -4,16 +4,26 @@ import { RouteRecordRaw } from "vue-router";
 
 const routes: RouteRecordRaw[] = [
   {
-    path: "/",
-    redirect: "/home",
+    path: "/login",
+    name: "login",
+    component: () => import("@/views/login/login.vue"),
     meta: {
+      icon: 1,
+      showFlag: false,
       uuid: uuidv4(),
     },
   },
+  // {
+  //   path: "/",
+  //   redirect: "/home",
+  //   meta: {
+  //     uuid: uuidv4(),
+  //   },
+  // },
   {
     path: "/home",
     name: "HOME",
-    component: () => import("../views/home.vue"),
+    component: () => import("../views/home/home.vue"),
     meta: {
       icon: 1,
       showFlag: true,
@@ -79,7 +89,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/about",
     name: "ABOUT",
-    component: () => import("@/views/about.vue"),
+    component: () => import("@/views/yanzhi/about.vue"),
     meta: {
       icon: 1,
       showFlag: true,
@@ -94,11 +104,11 @@ const routes: RouteRecordRaw[] = [
       showFlag: true,
       uuid: uuidv4(),
     },
-    component: () => import("@/views/hahahha.vue"),
+    component: () => import("@/views/yanzhi/hahahha.vue"),
   },
   {
     path: "/:pathMatch(.*)",
-    component: () => import("@/views/404.vue"),
+    component: () => import("@/views/yanzhi/404.vue"),
     meta: {},
   },
   {
@@ -123,16 +133,6 @@ const routes: RouteRecordRaw[] = [
         component: () => import("@/views/echarts/echarts1.vue"),
       },
     ],
-  },
-  {
-    path: "/login",
-    name: "login",
-    component: () => import("@/views/login.vue"),
-    meta: {
-      icon: 1,
-      showFlag: false,
-      uuid: uuidv4(),
-    },
   },
 ];
 
