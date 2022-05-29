@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import { RouteRecordRaw } from "vue-router";
 
 
-const routes: RouteRecordRaw[] = [
+export const someRoutes: RouteRecordRaw[] = [
   {
     path: "/",
     redirect: "/login",
@@ -87,16 +87,6 @@ const routes: RouteRecordRaw[] = [
     ],
   },
   {
-    path: "/about",
-    name: "ABOUT",
-    component: () => import("@/views/yanzhi/about.vue"),
-    meta: {
-      icon: 1,
-      showFlag: true,
-      uuid: uuidv4(),
-    },
-  },
-  {
     path: "/learns",
     name: "知识点",
     meta: {
@@ -105,11 +95,6 @@ const routes: RouteRecordRaw[] = [
       uuid: uuidv4(),
     },
     component: () => import("@/views/yanzhi/learns.vue"),
-  },
-  {
-    path: "/:pathMatch(.*)",
-    component: () => import("@/views/yanzhi/404.vue"),
-    meta: {},
   },
   {
     path: "/echarts",
@@ -134,30 +119,29 @@ const routes: RouteRecordRaw[] = [
       },
     ],
   },
+  {
+    path: "/users",
+    name: "用户",
+    redirect: "/users/userList",
+    meta: {
+      icon: 1,
+      showFlag: true,
+      uuid: uuidv4(),
+    },
+    component: () => import("@/components/layout/yLayout.vue"),
+    children: [
+      {
+        path: "userList",
+        name: "用户列表",
+        meta: {
+          icon: 1,
+          showFlag: true,
+          uuid: uuidv4(),
+        },
+        component: () => import("@/views/users/userList.vue"),
+      },
+    ],
+  },
 ];
 
-// 处理routes生成侧边栏菜单，
-// TODO:排序
-function handler(routes: RouteRecordRaw[]): RouteRecordRaw[] {
-  // let tarRoutes = routes.forEach(item=>{
-  //   item.meta.uuid = uuidv4()
-  // })
-  return routes.filter((item) => {
-    if (!item.meta?.showFlag) {
-      return false;
-    }
-    if (!item.children) {
-      return true;
-    } else {
-      handler(item.children);
-      return true;
-    }
-  });
-}
-
-const routes0 = handler(routes);
-
-export default routes;
-
-export { routes0 };
 

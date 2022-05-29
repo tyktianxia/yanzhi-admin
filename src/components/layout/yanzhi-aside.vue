@@ -52,7 +52,7 @@
 
 <script lang="ts" setup>
 import {ElMenu,ElMenuItem,ElSubMenu,ElIcon,ElRow} from "element-plus"
-import { routes0 } from "@/router/routes";
+import { routes0 } from "@/router";
 import {
   Location,
   Document,
