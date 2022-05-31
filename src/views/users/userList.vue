@@ -32,16 +32,15 @@
   </el-table>
   <ElPagination
     background
-    layout="total, sizes, prev, pager, next, jumper"
-    v-model:currentPage="pageData.tableData.currentPage"
-    :pageSize="pageData.tableData.pageSize"
-    :total="pageData.tableData.total"
+    layout="prev, pager, next"
+    v-model="pageData.paginate.currentPage"
+    :page-size="pageData.paginate.pageSize"
+    :total="pageData.paginate.total"
   />
 </template>
 
 <script setup>
 import {
-  ElCard,
   ElForm,
   ElFormItem,
   ElTable,
@@ -51,6 +50,10 @@ import {
   ElPagination,
 } from "element-plus";
 import { reactive, ref } from "vue";
+import dayjs from "dayjs";
+import { get,post } from "@/utils/request";
+import { getApiUrl } from "@/utils/api";
+
 const form = reactive({
   userName: "",
   iphone: "",
@@ -59,49 +62,46 @@ const pageData = reactive({
   tableData: [],
   paginate: {
     currentPage: 1,
-    pageSize: 2,
+    pageSize: 10,
     total: 0,
   },
 });
 
-const search = () => {
-  pageData.tableData = [
-    {
-      date: "2016-05-03",
-      name: "Tom",
-      address: "No. 189, Grove St, Los Angeles",
-    },
-    {
-      date: "2016-05-02",
-      name: "Tom",
-      address: "No. 189, Grove St, Los Angeles",
-    },
-    {
-      date: "2016-05-04",
-      name: "Tom",
-      address: "No. 189, Grove St, Los Angeles",
-    },
-    {
-      date: "2016-05-01",
-      name: "Tom",
-      address: "No. 189, Grove St, Los Angeles",
-    },
-  ];
-  pageData.paginate.total = pageData.tableData.length;
-  pageData.paginate.currentPage = 1;
+const search = async  () => {
+  try {
+    let res = await get(getApiUrl("getUserList"))
+    console.log("userslist",res)
+  } catch (error) {
+    console.log(error,"error")
+  }
+  // handlePaginate();
 };
-const addUser = () => {
-  pageData.tableData.push({
-    date: "2016-05-01",
-    name: "Tom",
-    address: "No. 189, Grove St, Los Angeles",
-  });
-  pageData.paginate.total = pageData.tableData.length;
-  pageData.paginate.currentPage = 1;
+const addUser = async () => {
+  // pageData.tableData.push({
+  //   date: dayjs().format("YYYY-MM-DD HH:mm:ss"),
+  //   name: "Tom",
+  //   address: "No. 189, Grove St, Los Angeles",
+  // });
+  try {
+    let param = {
+      userName:"hahha",
+      a:789
+    }
+    let res = await post(getApiUrl("addUser"),param)
+    console.log("addUser",res)
+  } catch (error) {
+    console.log(error,"error")
+  }
+  // handlePaginate();
 };
 const handleDelete = (index, row) => {
   pageData.tableData.splice(index, 1);
+  handlePaginate();
+};
+const handlePaginate = () => {
   pageData.paginate.total = pageData.tableData.length;
   pageData.paginate.currentPage = 1;
 };
+
+search();
 </script>
