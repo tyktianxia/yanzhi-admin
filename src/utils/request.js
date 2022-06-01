@@ -157,7 +157,7 @@ instance.interceptors.response.use(
     //   }
     // });
     if (response.config.url)
-      if (response.status === 200) {
+      if ([200, 201].includes(response.status)) {
         // return Promise.resolve(response.data);
         // http请求状态码只认200
         const res = response.data; //  拿到后端返回的数据
@@ -176,7 +176,7 @@ instance.interceptors.response.use(
       } else {
         // 非200状态码,但是不包括500，500走的error回调
         const mockError = new Error();
-        mockError.msg = "服务异常";
+        mockError.message = "服务异常";
         return Promise.reject(mockError);
       }
   },

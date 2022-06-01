@@ -3,6 +3,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import 'normalize.css'
 import './assets/common.css'
+import './assets/element-reset.css'
 import * as echarts from "echarts"
 
 // import * as Sentry from "@sentry/vue";

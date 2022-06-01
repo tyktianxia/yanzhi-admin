@@ -1,7 +1,9 @@
 const apis = {
   detailUrl: {
+    login: "/users/login",
     getUserList: "/users/findAll",
     addUser: "/users/addUser",
+    deleteUser: "/users/delete",
   },
   baseUrl: "http://10.10.0.100:8888",
 };

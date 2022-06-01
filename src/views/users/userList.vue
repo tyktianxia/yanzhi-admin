@@ -1,11 +1,11 @@
 <template>
   <p></p>
-  <ElForm ref="formRef" :inline="true" :model="form">
+  <ElForm :inline="true" :model="pageData.formData">
     <ElFormItem prop="userName">
-      <el-input v-model="form.userName" placeholder="请输入用户名" clearable />
+      <el-input v-model="pageData.formData.userName" placeholder="请输入用户名" clearable />
     </ElFormItem>
     <ElFormItem prop="iphone">
-      <el-input v-model="form.iphone" placeholder="请输入手机号" clearable />
+      <el-input v-model="pageData.formData.iphone" placeholder="请输入手机号" clearable />
     </ElFormItem>
     <ElFormItem>
       <ElButton @click="search">搜索</ElButton>
@@ -15,9 +15,12 @@
   </ElForm>
 
   <el-table :data="pageData.tableData" style="width: 100%">
-    <el-table-column prop="date" label="Date" width="180" />
-    <el-table-column prop="name" label="Name" width="180" />
-    <el-table-column prop="address" label="Address" />
+    <el-table-column type="index" label="序号" />
+    <el-table-column prop="userName" label="用户名" width="180" />
+    <el-table-column prop="passward" label="密码" width="180" />
+    <el-table-column prop="phone" label="电话" />
+    <el-table-column prop="pickName" label="姓名" />
+    <el-table-column prop="isActive" label="激活" />
     <el-table-column label="操作">
       <template #default="scope">
         <el-button size="small">Edit</el-button>
@@ -33,10 +36,51 @@
   <ElPagination
     background
     layout="prev, pager, next"
-    v-model="pageData.paginate.currentPage"
+    v-model:current-page="pageData.paginate.currentPage"
     :page-size="pageData.paginate.pageSize"
     :total="pageData.paginate.total"
+    @current-change="currentChange"
   />
+  <ElDialog
+    v-model="pageData.userForm.showFlag"
+    :title="pageData.userForm.title"
+  >
+    <ElForm
+      ref="userFormRef"
+      :inline="false"
+      :model="pageData.userForm.form"
+      label-width="80px"
+      :rules="pageData.userForm.rules"
+    >
+      <ElFormItem prop="userName" label="用户名">
+        <el-input
+          v-model="pageData.userForm.form.userName"
+          placeholder="请输入用户名"
+          clearable
+        />
+      </ElFormItem>
+      <ElFormItem prop="passward" label="密码">
+        <el-input
+          v-model="pageData.userForm.form.passward"
+          placeholder="请输入密码"
+          clearable
+        />
+      </ElFormItem>
+      <ElFormItem prop="iphone" label="手机号">
+        <el-input
+          v-model="pageData.userForm.form.iphone"
+          placeholder="请输入手机号"
+          clearable
+        />
+      </ElFormItem>
+    </ElForm>
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="cancel">取消</el-button>
+        <el-button type="primary" @click="confirm">确定</el-button>
+      </span>
+    </template>
+  </ElDialog>
 </template>
 
 <script setup>
@@ -48,60 +92,120 @@ import {
   ElInput,
   ElButton,
   ElPagination,
+  ElMessage,
+  ElMessageBox,
+  ElDialog,
 } from "element-plus";
 import { reactive, ref } from "vue";
 import dayjs from "dayjs";
-import { get,post } from "@/utils/request";
+import { get, post } from "@/utils/request";
 import { getApiUrl } from "@/utils/api";
 
-const form = reactive({
+const pageData = reactive({
+  formData:{
   userName: "",
   iphone: "",
-});
-const pageData = reactive({
+  },
   tableData: [],
+  tableData2: [],
   paginate: {
     currentPage: 1,
     pageSize: 10,
     total: 0,
   },
+  userForm: {
+    showFlag: false,
+    title: "",
+    form: {
+      userName: "",
+      passward: "",
+      iphone: "",
+    },
+    rules: {
+      userName: [{ required: true, message: "请输入用户名", trigger: "blur" }],
+      passward: [
+        {
+          required: true,
+          message: "请输入密码",
+          trigger: "blur",
+        },
+      ],
+    },
+  },
 });
+const userFormRef = ref();
 
-const search = async  () => {
+const search = async () => {
   try {
-    let res = await get(getApiUrl("getUserList"))
-    console.log("userslist",res)
+    let res = await get(getApiUrl("getUserList"));
+    console.log("userslist", res);
+    pageData.tableData2 = res;
+    handlePaginate();
   } catch (error) {
-    console.log(error,"error")
+    console.log(error);
   }
-  // handlePaginate();
 };
 const addUser = async () => {
-  // pageData.tableData.push({
-  //   date: dayjs().format("YYYY-MM-DD HH:mm:ss"),
-  //   name: "Tom",
-  //   address: "No. 189, Grove St, Los Angeles",
-  // });
-  try {
-    let param = {
-      userName:"hahha",
-      a:789
+  pageData.userForm.showFlag = true;
+  pageData.userForm.title = "新增";
+};
+function reset() {
+  pageData.userForm.showFlag = false;
+  pageData.userForm.form = {
+    userName: "",
+    passward: "",
+    iphone: "",
+  };
+}
+function cancel() {
+  reset();
+}
+const confirm = async () => {
+  await userFormRef.value.validate(async (valid, fields) => {
+    if (valid) {
+      let user = pageData.userForm.form;
+      if (!user.id) {
+        try {
+          await post(getApiUrl("addUser"), user);
+          ElMessage.success("操作成功");
+          await search();
+          reset();
+        } catch (error) {
+          ElMessage.error(error);
+        }
+      }
     }
-    let res = await post(getApiUrl("addUser"),param)
-    console.log("addUser",res)
-  } catch (error) {
-    console.log(error,"error")
-  }
-  // handlePaginate();
+  });
 };
 const handleDelete = (index, row) => {
-  pageData.tableData.splice(index, 1);
-  handlePaginate();
+  if (!row.id) {
+    return;
+  }
+  ElMessageBox.confirm("是否确认此用户?", "提示", {
+    confirmButtonText: "确定",
+    cancelButtonText: "取消",
+    type: "warning",
+  }).then(async () => {
+    try {
+      await post(getApiUrl("deleteUser") + "/" + row.id);
+      ElMessage.success("操作成功");
+      await search();
+    } catch (error) {
+      ElMessage.error(error);
+    }
+  });
 };
 const handlePaginate = () => {
-  pageData.paginate.total = pageData.tableData.length;
+  pageData.paginate.total = pageData.tableData2.length;
   pageData.paginate.currentPage = 1;
+  currentChange();
 };
-
+const currentChange = () => {
+  let { currentPage, pageSize } = pageData.paginate;
+  pageData.tableData = pageData.tableData2.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  );
+};
 search();
 </script>
