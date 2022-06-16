@@ -7,7 +7,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "start:express": "node ./server/bin/www",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .ts --fix"
   },
   "dependencies": {
     "@sentry/tracing": "^6.19.6",

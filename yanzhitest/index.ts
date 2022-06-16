@@ -6,9 +6,9 @@ function fn1(a: number): number {
 
 
 // 表达式 
-const fn2 = (a: number): number => 1
+const fn2 = (a: number): number => 1;
 
-const fn3: (a: number) => number = () => 1
+const fn3: (a: number) => number = () => 1;
 
 
 
@@ -19,9 +19,9 @@ type inter = {
 
 type inter2 = string
 type inter3 = string | number
-let obj1: inter = {
-    a: 1
-}
+const obj1: inter = {
+    a: 1,
+};
 
 
 // 两个概念

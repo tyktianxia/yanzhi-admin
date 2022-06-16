@@ -4,7 +4,7 @@ import { RouteRecordRaw } from "vue-router";
 
 import { baseRoutes } from "./base";
 import { someRoutes } from "./routes";
-let routes = [...someRoutes, ...baseRoutes]
+const routes = [...someRoutes, ...baseRoutes];
 
 const router = VueRouter.createRouter({
   history: VueRouter.createWebHashHistory(),
@@ -31,35 +31,35 @@ function handler(routes: RouteRecordRaw[]): RouteRecordRaw[] {
   });
 }
 
-const allowList = ['/login', '/register', '/registerResult'] // no redirect allowList
+const allowList = ["/login", "/register", "/registerResult"]; // no redirect allowList
 
 // 权限校验 参考antd pro的
 router.beforeEach((to, from, next) => {
   console.log("beforeEach");
-  let CommonStore = Common();
-  let token = CommonStore.userInfo.tokenStr;
+  const CommonStore = Common();
+  const token = CommonStore.userInfo.tokenStr;
 
   // token 在login接口赋值
   if (token) {
     if (to.path == "/login") {
-      next({ path: "home" })
+      next({ path: "home" });
     } else {
-      console.log("我进来了啊，尚未做校验，")
-      next()
+      console.log("我进来了啊，尚未做校验，");
+      next();
     }
   } else {
     if (allowList.includes(to.path)) {
       // 在免登录名单，直接进入
-      next()
+      next();
     } else {
-      next({ path: '/login' })
+      next({ path: "/login" });
     }
   }
 });
 
 router.afterEach(() => {
-})
+});
 export default router;
 
-let routes0 = handler(routes)
-export { routes0 }
+const routes0 = handler(routes);
+export { routes0 };

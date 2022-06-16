@@ -48,7 +48,7 @@ module.exports = {
     // ],
 
     // 2.2 .vue 的name属性 warn 使用短横线 【自动fix】
-    'vue/name-property-casing': ['warn', 'kebab-case'],
+    // 'vue/name-property-casing': ['warn', 'kebab-case'],
 
     // 2.3 Vue组件中Prop名称强制使用驼峰 error 级别
     'vue/prop-name-casing': [2, 'camelCase'],
@@ -109,6 +109,10 @@ module.exports = {
     'arrow-spacing': [1], // 箭头函数箭头前后强制空格
     'object-curly-spacing': [1, 'always'], // 强制在花括号中使用一致的空格
     'comma-spacing': [1], // 强制在逗号周围使用空格 前false 后true
-    'no-useless-escape': [0]
-  }
+    'no-useless-escape': [0],
+
+    // ------------------------------ //
+    // 以下
+    'no-empty-function': [1],
+    '@typescript-eslint/no-empty-function': [1], // 禁止空函数
 }
