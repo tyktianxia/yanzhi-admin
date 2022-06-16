@@ -4,6 +4,7 @@ import App from './App.vue'
 import 'normalize.css'
 import './assets/common.css'
 import * as echarts from 'echarts'
+import './assets/element-reset.css'
 
 // import * as Sentry from "@sentry/vue";
 // import { BrowserTracing } from "@sentry/tracing";
