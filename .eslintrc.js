@@ -1,119 +1,89 @@
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true
+  root: true,
+  globals: {
+    defineEmits: 'readonly',
+    defineProps: 'readonly',
   },
-  extends: ['eslint:recommended', 'plugin:vue/essential', 'plugin:@typescript-eslint/recommended'],
+  extends: [
+    'plugin:@typescript-eslint/recommended',
+    'plugin:vue/vue3-recommended',
+    'airbnb-base',
+  ],
   parserOptions: {
-    ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',
-    sourceType: 'module'
+    ecmaVersion: 2020,
   },
-  plugins: ['vue', '@typescript-eslint'],
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-
-    // 1.1 js中默认双引号 warn 级别 【自动fix】
-    quotes: [1, 'double'],
-
-    // 1.2 强制分号 warn 级别 【自动fix】
-    semi: [1, 'always'],
-
-    // 1.3 多行属性时强制增加 逗号  warn 级别 【自动fix】
-    'comma-dangle': [
-      1,
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off', // 禁用 debugger
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off', // 禁用 console
+    'no-bitwise': 'off', // 禁用按位运算符
+    'no-tabs': 'off', // 禁用 tab
+    'array-element-newline': ['error', 'consistent'], // 强制数组元素间出现换行
+    indent: [
+      'error',
+      2,
+      { MemberExpression: 0, SwitchCase: 1, ignoredNodes: ['TemplateLiteral'] },
+    ], // 强制使用一致的缩进
+    quotes: ['error', 'single'], // 强制使用一致的反勾号、双引号或单引号
+    'comma-dangle': ['error', 'always-multiline'], // 要求或禁止末尾逗号
+    'object-curly-spacing': ['error', 'always'], // 强制在大括号中使用一致的空格
+    'max-len': ['error', 120], // 强制一行的最大长度
+    'no-new': 'off', // 禁止使用 new 以避免产生副作用
+    'linebreak-style': 'off', // 强制使用一致的换行风格
+    'import/extensions': 'off', // 确保在导入路径中统一使用文件扩展名
+    'eol-last': 'off', // 要求或禁止文件末尾存在空行
+    'no-shadow': 'off', // 禁止变量声明与外层作用域的变量同名
+    'no-unused-vars': 'warn', // 禁止出现未使用过的变量
+    'import/no-cycle': 'off', // 禁止一个模块导入一个有依赖路径的模块回到自己身上
+    'arrow-parens': 'off', // 要求箭头函数的参数使用圆括号
+    semi: ['error', 'never'], // 要求或禁止使用分号代替 ASI
+    eqeqeq: 'off', // 要求使用 === 和 !==
+    'no-param-reassign': 'off', // 禁止对 function 的参数进行重新赋值
+    'import/prefer-default-export': 'off', // 如果模块只输入一个名字，则倾向于默认输出
+    'no-use-before-define': 'off', // 禁止在变量定义之前使用它们，则倾向于默认输出
+    'no-continue': 'off', // 禁用 continue 语句
+    'prefer-destructuring': 'off', // 优先使用数组和对象解构
+    'no-plusplus': 'off', // 禁用一元操作符 ++ 和 --
+    'prefer-const': 'warn', // 要求使用 const 声明那些声明后不再被修改的变量
+    'global-require': 'off', // 要求 require() 出现在顶层模块作用域中
+    'no-prototype-builtins': 'off', // 禁止直接调用 Object.prototypes 的内置属性
+    'consistent-return': 'off', // 要求 return 语句要么总是指定返回的值，要么不指定
+    'one-var-declaration-per-line': 'off', // 要求或禁止在变量声明周围换行
+    'one-var': 'off', // 强制函数中的变量要么一起声明要么分开声明
+    'import/named': 'off', // 确保命名导入与远程文件中的命名导出相对应
+    'object-curly-newline': 'off', // 强制大括号内换行符的一致性
+    'default-case': 'off', // 要求 switch 语句中有 default 分支
+    'no-trailing-spaces': 'off', // 禁用行尾空格
+    'func-names': 'off', // 要求或禁止使用命名的 function 表达式
+    radix: 'off', // 强制在 parseInt() 使用基数参数
+    'no-unused-expressions': 'off', // 禁止出现未使用过的表达式
+    'no-underscore-dangle': 'off', // 禁止标识符中有悬空下划线
+    'no-nested-ternary': 'off', // 禁用嵌套的三元表达式
+    'no-restricted-syntax': 'off', // 禁用特定的语法
+    'no-await-in-loop': 'off', // 禁止在循环中出现 await
+    'import/no-extraneous-dependencies': 'off', // 禁止使用外部包
+    'import/no-unresolved': 'off', // 确保导入指向一个可以解析的文件/模块
+    'template-curly-spacing': ['error', 'always'], // 要求或禁止模板字符串中的嵌入表达式周围空格的使用
+    '@typescript-eslint/no-var-requires': 'off', // 除import语句外，禁止使用require语句
+    '@typescript-eslint/no-empty-function': 'off', // 不允许空函数
+    '@typescript-eslint/no-explicit-any': 'off', // 禁止使用 any 类型
+    'guard-for-in': 'off', // 要求 for-in 循环中有一个 if 语句
+    'class-methods-use-this': 'off', // 强制类方法使用 this
+    'vue/html-indent': ['error', 2], // 在<template>中强制一致缩进
+    'vue/html-self-closing': 'off', // 执行自闭合的风格
+    'vue/max-attributes-per-line': [ // 强制每行属性的最大数量
+      'warn',
       {
-        arrays: 'always-multiline',
-        objects: 'always-multiline',
-        imports: 'always-multiline',
-        exports: 'always-multiline',
-        functions: 'never'
-      }
+        singleline: {
+          max: 3,
+          allowFirstLine: true,
+        },
+        multiline: {
+          max: 1,
+          allowFirstLine: false,
+        },
+      },
     ],
-
-    // 1.4 关闭强制使用全等 http://eslint.cn/docs/rules/eqeqeq
-    eqeqeq: [0],
-
-    //2.1 template 属性折行 warn 单行超过5个就自动折行 【自动fix】
-    // 'vue/max-attributes-per-line': [
-    //   1,
-    //   {
-    //     singleline: 5,
-    //     multiline: {
-    //       max: 1,
-    //       allowFirstLine: false
-    //     }
-    //   }
-    // ],
-
-    // 2.2 .vue 的name属性 warn 使用短横线 【自动fix】
-    // 'vue/name-property-casing': ['warn', 'kebab-case'],
-
-    // 2.3 Vue组件中Prop名称强制使用驼峰 error 级别
-    'vue/prop-name-casing': [2, 'camelCase'],
-
-    // 2.4 prop定义应始终尽可能详细，至少指定类型 不允许用数组接收 .error 级别
-    'vue/require-prop-types': [2],
-
-    // 2.5 使用组件时，强制 <CoolComponent> 大写  warn 级别 【自动fix】
-    'vue/component-name-in-template-casing': [1, 'PascalCase'],
-
-    // 2.6 组件中options定义的顺序  遵循vue风格指南 warn 级别 【自动fix】
-    'vue/order-in-components': [
-      1,
-      {
-        order: ['el', 'name', 'parent', 'functional', ['delimiters', 'comments'], ['components', 'directives', 'filters'], 'extends', 'mixins', 'inheritAttrs', 'model', ['props', 'propsData'], 'fetch', 'asyncData', 'data', 'computed', 'watch', 'LIFECYCLE_HOOKS', 'methods', 'head', ['template', 'render'], 'renderError']
-      }
-    ],
-
-    // 2.7 属性顺序,遵循vue风格指南 warn 级别 【自动fix】
-    'vue/attributes-order': [
-      1,
-      {
-        order: ['DEFINITION', 'LIST_RENDERING', 'CONDITIONALS', 'RENDER_MODIFIERS', 'GLOBAL', 'UNIQUE', 'TWO_WAY_BINDING', 'OTHER_DIRECTIVES', 'OTHER_ATTR', 'EVENTS', 'CONTENT'],
-        alphabetical: false //关闭按字母顺序
-      }
-    ],
-    //  关闭 prop属性强制需要默认值
-    'vue/require-default-prop': [0],
-
-    //  关闭 强制实行单标签
-    'vue/html-self-closing': [0],
-
-    // 关闭标签属性强制使用短横线。
-    'vue/attribute-hyphenation': [0],
-
-    // 关闭单行html折行
-    'vue/singleline-html-element-content-newline': 0,
-
-    // 未使用 变量进行警告，不error
-    'no-unused-vars': [
-      1,
-      {
-        vars: 'all', //检测所有变量
-        args: 'none', //参数未使用，可不检测
-        caughtErrors: 'none' //不检测catch中的
-        // argsIgnorePattern:'^_',//忽略_开头的
-      }
-    ],
-    'no-useless-catch': [0],
-    'no-inner-declarations': [0], // 函数申明可以放在函数的最下方
-    'no-useless-escape': [0],
-    'require-atomic-updates': [0],
-    'key-spacing': [1], // 强制在对象字面量的属性中键和值之间使用一致的间距
-    'keyword-spacing': [1], // 关键字前后必须空格
-    'semi-spacing': [1], // 强制 分号前没空格，分号后有空格
-    'space-before-blocks': [1], // 强制代码块前空格
-    'space-infix-ops': [1], // 强制操作符左右有空格
-    'arrow-spacing': [1], // 箭头函数箭头前后强制空格
-    'object-curly-spacing': [1, 'always'], // 强制在花括号中使用一致的空格
-    'comma-spacing': [1], // 强制在逗号周围使用空格 前false 后true
-    'no-useless-escape': [0],
-
-    // ------------------------------ //
-    // 以下
-    'no-empty-function': [1],
-    '@typescript-eslint/no-empty-function': [2] // 禁止空函数
-  }
+    'vue/singleline-html-element-content-newline': 'off', // 要求单行元素的内容前后有一个换行符
+  },
 }

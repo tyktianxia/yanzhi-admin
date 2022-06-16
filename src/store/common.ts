@@ -1,28 +1,25 @@
-import { defineStore } from "pinia";
-import { UserInfo } from "@/types/userInfo";
-
+import { defineStore } from 'pinia'
+import { UserInfo } from '@/types/userInfo'
 
 interface UserStateType {
   userInfo: UserInfo
 }
 
-export const Common = defineStore("common", {
-  state: (): UserStateType => {
-    return {
-      userInfo: {
-        name: "",
-        id: "",
-        tokenStr: "",
-      },
-    };
-  },
+export const Common = defineStore('common', {
+  state: (): UserStateType => ({
+    userInfo: {
+      name: '',
+      id: '',
+      tokenStr: '',
+    },
+  }),
   // 开启数据缓存
   persist: {
     enabled: true,
     strategies: [
       {
-          key: "common",
-          storage: localStorage,
+        key: 'common',
+        storage: localStorage,
       },
     ],
   },
@@ -31,11 +28,10 @@ export const Common = defineStore("common", {
   },
   actions: {
     setTokenStr(tokenStr: string) {
-      this.userInfo.tokenStr = tokenStr;
+      this.userInfo.tokenStr = tokenStr
     },
     setUserInfo(info: UserInfo) {
-      this.userInfo = info;
+      this.userInfo = info
     },
   },
-});
-
+})
