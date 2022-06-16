@@ -14,6 +14,8 @@ let route = useRoute();
 
 let whitePaths = reactive(["/", "/login"])
 
+let a:String = 123;
+
 onMounted(() => {
   console.log("app mounted");
 });
