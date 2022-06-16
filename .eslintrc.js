@@ -114,5 +114,6 @@ module.exports = {
     // ------------------------------ //
     // 以下
     'no-empty-function': [1],
-    '@typescript-eslint/no-empty-function': [1], // 禁止空函数
+    '@typescript-eslint/no-empty-function': [2] // 禁止空函数
+  }
 }
