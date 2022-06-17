@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -10,15 +11,13 @@ a {
   text-decoration: none;
 }
 
-
-
 /* ====== */
 
-.common-layout>.el-container {
+.common-layout > .el-container {
   height: 100vh;
 }
 
-.subContainer>.el-container {
+.subContainer > .el-container {
   height: calc(100vh - 60px);
 }
 
@@ -46,7 +45,7 @@ a {
   color: var(--el-text-color-primary);
 }
 
-.common-layout>.el-container {
+.common-layout > .el-container {
   margin-bottom: 40px;
 }
 

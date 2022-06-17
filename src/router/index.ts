@@ -1,16 +1,17 @@
-import * as VueRouter from "vue-router";
-import { Common } from "@/store/common";
-import { RouteRecordRaw } from "vue-router";
+import * as VueRouter from 'vue-router'
+import { RouteRecordRaw } from 'vue-router'
+import { Common } from '@/store/common'
 
-import { baseRoutes } from "./base";
-import { someRoutes } from "./routes";
-let routes = [...someRoutes, ...baseRoutes]
+import { baseRoutes } from './base'
+import { someRoutes } from './routes'
+
+const routes = [...someRoutes, ...baseRoutes]
 
 const router = VueRouter.createRouter({
   history: VueRouter.createWebHashHistory(),
   // history: VueRouter.createWebHistory,
   routes,
-});
+})
 
 // 处理routes生成侧边栏菜单，
 // TODO:排序
@@ -20,46 +21,43 @@ function handler(routes: RouteRecordRaw[]): RouteRecordRaw[] {
   // })
   return routes.filter((item) => {
     if (!item.meta?.showFlag) {
-      return false;
+      return false
     }
     if (!item.children) {
-      return true;
-    } else {
-      handler(item.children);
-      return true;
-    }
-  });
+      return true
+    } 
+    handler(item.children)
+    return true
+  })
 }
 
 const allowList = ['/login', '/register', '/registerResult'] // no redirect allowList
 
 // 权限校验 参考antd pro的
 router.beforeEach((to, from, next) => {
-  console.log("beforeEach");
-  let CommonStore = Common();
-  let token = CommonStore.userInfo.tokenStr;
+  console.log('beforeEach')
+  const CommonStore = Common()
+  const token = CommonStore.userInfo.tokenStr
 
   // token 在login接口赋值
   if (token) {
-    if (to.path == "/login") {
-      next({ path: "home" })
+    if (to.path == '/login') {
+      next({ path: 'home' })
     } else {
-      console.log("我进来了啊，尚未做校验，")
+      console.log('我进来了啊，尚未做校验，')
       next()
     }
+  } else if (allowList.includes(to.path)) {
+    // 在免登录名单，直接进入
+    next()
   } else {
-    if (allowList.includes(to.path)) {
-      // 在免登录名单，直接进入
-      next()
-    } else {
-      next({ path: '/login' })
-    }
+    next({ path: '/login' })
   }
-});
+})
 
 router.afterEach(() => {
 })
-export default router;
+export default router
 
-let routes0 = handler(routes)
+const routes0 = handler(routes)
 export { routes0 }
