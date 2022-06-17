@@ -5,7 +5,8 @@ const apis = {
     addUser: "/users/addUser",
     deleteUser: "/users/delete",
   },
-  baseUrl: "http://10.10.0.100:8888",
+  // baseUrl: "http://10.10.0.100:8888",
+  baseUrl: "http://tyktianxia.top:8888",
 };
 
 export const getApiUrl = (urlName) => {
@@ -13,6 +14,5 @@ export const getApiUrl = (urlName) => {
   console.log("axios url:", path)
   return path
 };
-
 
  
