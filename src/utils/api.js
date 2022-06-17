@@ -10,9 +10,7 @@ const apis = {
 };
 
 export const getApiUrl = (urlName) => {
-  let path = apis.baseUrl + apis.detailUrl[urlName];
-  console.log("axios url:", path)
-  return path
+  const path = apis.baseUrl + apis.detailUrl[urlName];
+  console.log("axios url:", path);
+  return path;
 };
-
- 

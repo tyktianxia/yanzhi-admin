@@ -1,20 +1,20 @@
-const p1 = new Promise((reslove, reject) => reslove(12))
+const p1 = new Promise((reslove, reject) => reslove(12));
 
-console.log(p1)
+console.log(p1);
 
 p1.then((res) => {
-  console.log(res)
-})
+  console.log(res);
+});
 
 // ===============================
 function timeout(ms) {
   return new Promise((resolve, reject) => {
-    setTimeout(resolve, ms, 'done')
-  })
+    setTimeout(resolve, ms, "done");
+  });
 }
 
 timeout(100).then((value) => {
-  console.log(value)
-})
+  console.log(value);
+});
 
-console.log('text end')
+console.log("text end");
