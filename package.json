@@ -8,7 +8,8 @@
     "preview": "vite preview",
     "start:express": "node ./server/bin/www",
     "lint": "eslint . --ext .ts,js,tsx,jsx",
-    "lint:fix": "eslint . --ext .ts,js,tsx,jsx --fix"
+    "lint:fix": "eslint . --ext .ts,js,tsx,jsx --fix",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "@sentry/tracing": "^6.19.6",
@@ -46,12 +47,16 @@
     "vite": "^2.8.0",
     "vue-eslint-parser": "^9.0.2"
   },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "lint-staged": {
-    "*.{js,ts,jsx,vue}": [
-      "eslint . --ext .ts",
+    "*.{js,vue,jsx,tsx}": [
+      "prettier --write",
+      "eslint --cache --fix",
       "git add"
     ]
   }

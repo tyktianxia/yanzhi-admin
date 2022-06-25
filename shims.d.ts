@@ -6,3 +6,10 @@ declare module "*.vue" {
   };
   export default component;
 }
+
+declare const myMap: Map<string, string>;
+
+declare type Test = {
+  a:string,
+  num:number
+}
