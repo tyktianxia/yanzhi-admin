@@ -1,18 +1,18 @@
 for (let i = 0; i < 5; i++) {
   if (i == 2) {
-    break
+    break;
   }
-  console.log(i)
+  console.log(i);
 }
-console.log('========')
+console.log("========");
 for (let i = 0; i < 5; i++) {
   if (i == 2) {
-    continue
+    continue;
   }
-  console.log(i)
+  console.log(i);
 }
 
-console.log('========')
+console.log("========");
 // for(let i = 0; i <5 ;i++){
 //   if(i == 3){
 //     return;

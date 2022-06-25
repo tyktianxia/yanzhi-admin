@@ -5,7 +5,7 @@
  * @return {Function}   柯里化后的函数
  */
 function curry(fn, length = fn.length, holder = curry) {
-  return _curry.call(this, fn, length, holder, [], [])
+  return _curry.call(this, fn, length, holder, [], []);
 }
 /**
 * 中转函数
@@ -19,47 +19,47 @@ function curry(fn, length = fn.length, holder = curry) {
 function _curry(fn, length, holder, args, holders) {
   return function (..._args) {
     // 将参数复制一份，避免多次操作同一函数导致参数混乱
-    const params = args.slice()
+    const params = args.slice();
     // 将占位符位置列表复制一份，新增加的占位符增加至此
-    const _holders = holders.slice()
+    const _holders = holders.slice();
     // 循环入参，追加参数 或 替换占位符
     _args.forEach((arg, i) => {
       // 真实参数 之前存在占位符 将占位符替换为真实参数
       if (arg !== holder && holders.length) {
-        const index = holders.shift()
-        _holders.splice(_holders.indexOf(index), 1)
-        params[index] = arg
+        const index = holders.shift();
+        _holders.splice(_holders.indexOf(index), 1);
+        params[index] = arg;
       }
       // 真实参数 之前不存在占位符 将参数追加到参数列表中
       else if (arg !== holder && !holders.length) {
-        params.push(arg)
+        params.push(arg);
       }
       // 传入的是占位符,之前不存在占位符 记录占位符的位置
       else if (arg === holder && !holders.length) {
-        params.push(arg)
-        _holders.push(params.length - 1)
+        params.push(arg);
+        _holders.push(params.length - 1);
       }
       // 传入的是占位符,之前存在占位符 删除原占位符位置
       else if (arg === holder && holders.length) {
-        holders.shift()
+        holders.shift();
       }
-    })
+    });
     // params 中前 length 条记录中不包含占位符，执行函数
-    if (params.length >= length && params.slice(0, length).every(i => i !== holder)) {
-      return fn.apply(this, params)
-    } 
-    return _curry.call(this, fn, length, holder, params, _holders)
-  }
+    if (params.length >= length && params.slice(0, length).every((i) => i !== holder)) {
+      return fn.apply(this, params);
+    }
+    return _curry.call(this, fn, length, holder, params, _holders);
+  };
 }
 const fn = function (a, b, c, d, e) {
-  console.log([a, b, c, d, e])
-}
+  console.log([a, b, c, d, e]);
+};
 
-const _ = {} // 定义占位符
-const _fn = curry(fn, 5, _) // 将函数柯里化，指定所需的参数个数，指定所需的占位符
+const _ = {}; // 定义占位符
+const _fn = curry(fn, 5, _); // 将函数柯里化，指定所需的参数个数，指定所需的占位符
 
 // _fn(1, 2, 3, 4, 5);                 // print: 1,2,3,4,5
-_fn(_, 2, 3, 4, 5)(1) // print: 1,2,3,4,5
+_fn(_, 2, 3, 4, 5)(1); // print: 1,2,3,4,5
 // _fn(1, _, 3, 4, 5)(2);              // print: 1,2,3,4,5
 // _fn(1, _, 3)(_, 4,_)(2)(5);         // print: 1,2,3,4,5
 // _fn(1, _, _, 4)(_, 3)(2)(5);        // print: 1,2,3,4,5

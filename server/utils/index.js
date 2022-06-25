@@ -1,11 +1,11 @@
 module.exports = {
-  normalRes: (data, code = '00000', msg = 'SUCCESS') => ({
-    code: '00000',
+  normalRes: (data, code = "00000", msg = "SUCCESS") => ({
+    code: "00000",
     data,
-    message: 'SUCCESS',
-    msg: 'SUCCESS',
+    message: "SUCCESS",
+    msg: "SUCCESS",
   }),
-  abnormalRes: (code = '50001', msg = '操作失败！') => ({
+  abnormalRes: (code = "50001", msg = "操作失败！") => ({
     code,
     data: null,
     message: msg,
@@ -32,4 +32,4 @@ module.exports = {
   //     msg,
   //   };
   // },
-}
+};
