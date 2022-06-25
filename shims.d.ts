@@ -2,7 +2,7 @@ declare module "*.vue" {
   import { App, defineComponent } from "vue";
 
   const component: ReturnType<typeof defineComponent> & {
-    install(app: App): void
+    install(app: App): void;
   };
   export default component;
 }
@@ -10,6 +10,6 @@ declare module "*.vue" {
 declare const myMap: Map<string, string>;
 
 declare type Test = {
-  a:string,
-  num:number
-}
+  a: string;
+  num: number;
+};

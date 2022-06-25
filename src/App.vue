@@ -12,9 +12,9 @@ import { onMounted, reactive } from "vue";
 
 let route = useRoute();
 
-let whitePaths = reactive(["/", "/login"])
+let whitePaths =    reactive(["/", "/login"])
 
-let a:String = 123;
+let a: String = 123;
 
 onMounted(() => {
   console.log("app mounted");
