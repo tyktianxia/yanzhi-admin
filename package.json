@@ -9,7 +9,6 @@
     "start:express": "node ./server/bin/www",
     "lint": "eslint . --ext .ts,js,tsx,jsx",
     "lint:fix": "eslint . --ext .ts,js,tsx,jsx --fix",
-    "lint-staged": "lint-staged",
     "test": "node index.js"
   },
   "dependencies": {
@@ -51,7 +50,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npm run test"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
@@ -59,6 +58,9 @@
       "prettier --write",
       "eslint --cache --fix",
       "git add"
+    ],
+    "*.md": [
+      "prettier --write"
     ]
   }
 }
