@@ -55,7 +55,6 @@
   },
   "lint-staged": {
     "*.{js,vue,jsx,tsx}": [
-      "prettier --write",
       "eslint --cache --fix",
       "git add"
     ],

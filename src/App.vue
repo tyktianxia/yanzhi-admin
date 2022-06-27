@@ -15,7 +15,7 @@ let route = useRoute();
 let whitePaths =     reactive(["/", "/login"])
 
 let a: String = 123;
-const a;
+const b;
 
 onMounted(() => {
   console.log("app mounted");
