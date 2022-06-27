@@ -16,6 +16,7 @@ let whitePaths =     reactive(["/", "/login"])
 
 let a: String = 123;
 const b;
+const c;
 
 onMounted(() => {
   console.log("app mounted");
