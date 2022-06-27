@@ -9,7 +9,8 @@
     "start:express": "node ./server/bin/www",
     "lint": "eslint . --ext .ts,js,tsx,jsx",
     "lint:fix": "eslint . --ext .ts,js,tsx,jsx --fix",
-    "test": "node index.js"
+    "test": "node index.js",
+    "lint:prettier": "prettier --write"
   },
   "dependencies": {
     "@sentry/tracing": "^6.19.6",
