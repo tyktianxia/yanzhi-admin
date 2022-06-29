@@ -5,5 +5,5 @@
 // }
 
 export interface UserInfo {
-    [key:string]:any
+  [key: string]: any;
 }

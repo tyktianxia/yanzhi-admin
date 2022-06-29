@@ -8,9 +8,7 @@ class Father {
 }
 
 class Son extends Father {
-  constructor() {
-
-  }
+  constructor() {}
 
   fn2() {
     console.log("son fn2");

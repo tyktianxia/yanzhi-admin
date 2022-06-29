@@ -55,8 +55,7 @@ router.beforeEach((to, from, next) => {
   }
 });
 
-router.afterEach(() => {
-});
+router.afterEach(() => {});
 export default router;
 
 const routes0 = handler(routes);

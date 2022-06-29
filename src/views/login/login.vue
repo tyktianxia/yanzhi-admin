@@ -4,31 +4,12 @@
       <ElForm ref="loginFormRef" :model="form" :rules="rules">
         <p ref="testRef" class="yz_form_title">Login Page</p>
         <ElFormItem prop="userName">
-          <el-input
-            v-model="form.userName"
-            class="yz_form_input"
-            placeholder="请输入用户名"
-            :prefix-icon="User"
-            clearable
-          />
+          <el-input v-model="form.userName" class="yz_form_input" placeholder="请输入用户名" :prefix-icon="User" clearable />
         </ElFormItem>
         <ElFormItem prop="passward">
-          <el-input
-            v-model="form.passward"
-            class="yz_form_input"
-            placeholder="请输入密码"
-            :prefix-icon="Lock"
-            clearable
-          />
+          <el-input v-model="form.passward" class="yz_form_input" placeholder="请输入密码" :prefix-icon="Lock" clearable />
         </ElFormItem>
-        <ElButton
-          type="primary"
-          class="yz_form_button"
-          :loading="btnLoading"
-          @click="toLogin"
-        >
-          登录
-        </ElButton>
+        <ElButton type="primary" class="yz_form_button" :loading="btnLoading" @click="toLogin"> 登录 </ElButton>
       </ElForm>
     </div>
   </div>
@@ -36,9 +17,7 @@
 
 <script setup>
 // import type { FormInstance } from 'element-plus'
-import {
-  ElButton, ElForm, ElInput, ElFormItem, ElMessage,
-} from "element-plus";
+import { ElButton, ElForm, ElInput, ElFormItem, ElMessage } from "element-plus";
 import { Lock, User } from "@element-plus/icons-vue";
 import { useRouter } from "vue-router";
 import { ref, reactive } from "vue";

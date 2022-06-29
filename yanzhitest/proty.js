@@ -15,8 +15,8 @@ console.log(Object.getOwnPropertyNames(o2));
 console.log(Object.getOwnPropertyDescriptor(o2, "name"));
 console.log(Object.getOwnPropertyDescriptor(obj, sym));
 console.log(Object.getOwnPropertyDescriptor(obj, "zz"));
-let a; let
-  b;
+let a;
+let b;
 console.log((a = Object.getOwnPropertyDescriptors(obj)));
 console.log((b = Object.getOwnPropertyDescriptors(o2)));
 
@@ -89,11 +89,15 @@ t1.e = String("123");
 t1.f = Boolean(123);
 
 console.log(
-  JSON.stringify(t1, (key, value) => {
-    console.log("key is ", key);
-    console.log("value is ", value);
-    return value;
-  }, "")
+  JSON.stringify(
+    t1,
+    (key, value) => {
+      console.log("key is ", key);
+      console.log("value is ", value);
+      return value;
+    },
+    "",
+  ),
 );
 
 console.log("+++++++++++++++++++++++");

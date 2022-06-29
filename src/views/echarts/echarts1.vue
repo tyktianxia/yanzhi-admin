@@ -10,8 +10,8 @@ onMounted(() => {
   fun1();
   echartInit();
 });
-const arr0:number[] = [1, 2, 3, 4, 5];
-const arr:Array<number> = [1, 2, 4, 5];
+const arr0: number[] = [1, 2, 3, 4, 5];
+const arr: Array<number> = [1, 2, 4, 5];
 </script>
 
 <script lang="ts">

@@ -13,9 +13,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import {
-  ElButton, ElTable, ElTableColumn, ElLoading,
-} from "element-plus";
+import { ElButton, ElTable, ElTableColumn, ElLoading } from "element-plus";
 
 import Child1 from "./components/child1.vue";
 
@@ -47,7 +45,6 @@ const tableData = [
 const clickTest = (e: Event) => {
   console.log(e.target);
 };
-
 </script>
 
 <style>

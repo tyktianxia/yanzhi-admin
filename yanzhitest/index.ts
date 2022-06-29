@@ -10,11 +10,11 @@ const fn3: (a: number) => number = () => 1;
 
 // 对象
 type inter = {
-    a: string
-}
+  a: string;
+};
 
-type inter2 = string
-type inter3 = string | number
+type inter2 = string;
+type inter3 = string | number;
 const obj1: inter = {
   a: 1,
 };

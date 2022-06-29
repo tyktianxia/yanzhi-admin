@@ -8,14 +8,14 @@ function curry(fn, length = fn.length, holder = curry) {
   return _curry.call(this, fn, length, holder, [], []);
 }
 /**
-* 中转函数
-* @param fn            柯里化的原函数
-* @param length        原函数需要的参数个数
-* @param holder        接收的占位符
-* @param args          已接收的参数列表
-* @param holders       已接收的占位符位置列表
-* @return {Function}   继续柯里化的函数 或 最终结果
-*/
+ * 中转函数
+ * @param fn            柯里化的原函数
+ * @param length        原函数需要的参数个数
+ * @param holder        接收的占位符
+ * @param args          已接收的参数列表
+ * @param holders       已接收的占位符位置列表
+ * @return {Function}   继续柯里化的函数 或 最终结果
+ */
 function _curry(fn, length, holder, args, holders) {
   return function (..._args) {
     // 将参数复制一份，避免多次操作同一函数导致参数混乱

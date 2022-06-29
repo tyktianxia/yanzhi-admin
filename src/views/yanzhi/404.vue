@@ -7,6 +7,6 @@
 <style>
 .page404 {
   font-size: 24px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
 </style>

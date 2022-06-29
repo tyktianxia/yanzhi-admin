@@ -20,8 +20,7 @@ const props = defineProps<{
     name: string;
   };
 }>();
-const emit = defineEmits<{(e: "click2", name: string): void;
-}>();
+const emit = defineEmits<{ (e: "click2", name: string): void }>();
 const clickBtn = () => {
   emit("click2", props.cardData.name);
 };

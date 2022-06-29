@@ -14,14 +14,9 @@ const route = useRoute();
 
 const whitePaths = reactive(["/", "/login"]);
 
-const a: string = 123;
-const b;
-const c;
-
 onMounted(() => {
   console.log("app mounted");
 });
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -1,7 +1,7 @@
 <template>
   <h2>测试模块</h2>
   <div @click="testFather">
-    <template v-for="(item,index) in cardList" :key="index">
+    <template v-for="(item, index) in cardList" :key="index">
       <Child ref="lkjl" :cardData="item" @click2="clickBtn"></Child>
     </template>
     <Child2 ref="child2"></Child2>
@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import {
-  isProxy, isReactive, isRef, reactive, Ref, shallowReactive, shallowRef, toRefs, watchEffect, 
+  isProxy, isReactive, isRef, reactive, Ref, shallowReactive, shallowRef, toRefs, watchEffect,
 , ref } from "vue";
 import Child from "./component/child.vue";
 import Child2 from "./component/child2.vue";
@@ -54,7 +54,6 @@ function testHtmlClick() {
 function testFather() {
 console.log("testFather");
 }
-
 </script>
 
 <style>

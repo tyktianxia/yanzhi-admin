@@ -19,20 +19,15 @@ const CommonStore = Common();
 const TestStore = Test();
 
 const toLogout = () => {
-  ElMessageBox.confirm(
-    "是否确认退出登录?",
-    "提示",
-    {
-      confirmButtonText: "确定",
-      cancelButtonText: "取消",
-      type: "warning",
-    }
-  )
-    .then(() => {
-      CommonStore.setUserInfo({});
-      console.log("logout", TestStore.testData);
-      $router.push("/login");
-    });
+  ElMessageBox.confirm("是否确认退出登录?", "提示", {
+    confirmButtonText: "确定",
+    cancelButtonText: "取消",
+    type: "warning",
+  }).then(() => {
+    CommonStore.setUserInfo({});
+    console.log("logout", TestStore.testData);
+    $router.push("/login");
+  });
 };
 </script>
 

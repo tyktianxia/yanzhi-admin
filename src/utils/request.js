@@ -141,7 +141,7 @@ instance.interceptors.request.use(
 
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 );
 
 // 响应 response拦截器  如果非200 。拦截器的两个回调都会走
@@ -156,19 +156,20 @@ instance.interceptors.response.use(
     // });
     if (response.config.url) {
       if ([200, 201].includes(response.status)) {
-      // return Promise.resolve(response.data);
-      // http请求状态码只认200
+        // return Promise.resolve(response.data);
+        // http请求状态码只认200
         const res = response.data; //  拿到后端返回的数据
         // 给message赋值
         res.message = res.message || res.msg;
         // 实际业务状态码只认 '00000'.
         if (res.code === "00000") {
-        // 大部分请求只有正确的返回值。那就是code 00000
+          // 大部分请求只有正确的返回值。那就是code 00000
           return Promise.resolve(res.data);
         }
         // 不同的状态码并不是常态，其余状态码统一扔try catch处理,这里需要在业务代码中判断状态码
         return Promise.reject(res);
-      } if ([302, 301].includes(response.status)) {
+      }
+      if ([302, 301].includes(response.status)) {
         return Promise.resolve(response.data);
       }
       // 非200状态码,但是不包括500，500走的error回调
@@ -205,7 +206,7 @@ instance.interceptors.response.use(
     }
     mockError.message = mockError.msg;
     return Promise.reject(mockError);
-  }
+  },
 );
 
 // 通用get请求

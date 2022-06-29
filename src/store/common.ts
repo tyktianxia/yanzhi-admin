@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { UserInfo } from "@/types/userInfo";
 
 interface UserStateType {
-  userInfo: UserInfo
+  userInfo: UserInfo;
 }
 
 export const Common = defineStore("common", {

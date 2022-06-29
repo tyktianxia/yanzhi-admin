@@ -1,11 +1,6 @@
 <template>
   <el-row class="tac">
-    <el-menu
-      :default-active="active"
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
-    >
+    <el-menu :default-active="active" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
       <template v-for="item in routes0">
         <template v-if="!item.children">
           <el-menu-item :index="item.meta.uuid || item.path" @click="clickMenuItem(item)">
@@ -32,11 +27,7 @@
                     <span>{{ jtem.name }}</span>
                   </template>
                   <template v-for="ztem in jtem.children">
-                    <el-menu-item
-                      v-if="!ztem.children"
-                      :index="ztem.meta.uuid || ztem.path"
-                      @click="clickMenuItem(ztem)"
-                    >
+                    <el-menu-item v-if="!ztem.children" :index="ztem.meta.uuid || ztem.path" @click="clickMenuItem(ztem)">
                       <span>{{ ztem.name }}</span>
                     </el-menu-item>
                   </template>
@@ -51,15 +42,8 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  ElMenu, ElMenuItem, ElSubMenu, ElIcon, ElRow,
-} from "element-plus";
-import {
-  Location,
-  Document,
-  Menu as IconMenu,
-  Setting,
-} from "@element-plus/icons-vue";
+import { ElMenu, ElMenuItem, ElSubMenu, ElIcon, ElRow } from "element-plus";
+import { Location, Document, Menu as IconMenu, Setting } from "@element-plus/icons-vue";
 import { ref, watchEffect } from "vue";
 
 import { useRoute, useRouter } from "vue-router";
