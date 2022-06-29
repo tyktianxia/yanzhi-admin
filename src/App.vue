@@ -6,17 +6,17 @@
 </template>
 
 <script lang="ts" setup>
-import yanzhiVue from "./views/yanzhi.vue";
 import { useRoute } from "vue-router";
 import { onMounted, reactive } from "vue";
+import yanzhiVue from "./views/yanzhi.vue";
 
-let route = useRoute();
+const route = useRoute();
 
-let whitePaths =     reactive(["/", "/login"])
+const whitePaths = reactive(["/", "/login"]);
 
-let a: String = 123;
-const   b;
-const   c;
+const a: string = 123;
+const b;
+const c;
 
 onMounted(() => {
   console.log("app mounted");
@@ -25,4 +25,3 @@ onMounted(() => {
 
 <style scoped>
 </style>
-

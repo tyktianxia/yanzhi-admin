@@ -14,13 +14,13 @@
 
 <script lang="ts" setup>
 import { ElCard } from "element-plus";
+
 const props = defineProps<{
   cardData: {
     name: string;
   };
 }>();
-const emit = defineEmits<{
-  (e: "click2", name: string): void;
+const emit = defineEmits<{(e: "click2", name: string): void;
 }>();
 const clickBtn = () => {
   emit("click2", props.cardData.name);

@@ -13,13 +13,15 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { ElButton, ElTable, ElTableColumn, ElLoading } from "element-plus";
+import {
+  ElButton, ElTable, ElTableColumn, ElLoading,
+} from "element-plus";
 
 import Child1 from "./components/child1.vue";
 
-let loading = ref(true);
+const loading = ref(true);
 function click1() {
-  let loadingInstance1 = ElLoading.service({ fullscreen: true });
+  const loadingInstance1 = ElLoading.service({ fullscreen: true });
   setTimeout(() => {
     loadingInstance1.close();
   }, 1500);

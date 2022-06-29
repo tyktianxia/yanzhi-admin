@@ -2,7 +2,7 @@
   <h2>测试模块</h2>
   <p ref="testRef">{{ h2Title }}</p>
 
-  <div ref="arrRef" v-for="item in list">{{ item }}</div>
+  <div v-for="item in list" ref="arrRef">{{ item }}</div>
   <button @click="btnClick">click</button>
 </template>
 

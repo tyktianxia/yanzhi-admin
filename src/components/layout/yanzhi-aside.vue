@@ -51,21 +51,23 @@
 </template>
 
 <script lang="ts" setup>
-import {ElMenu,ElMenuItem,ElSubMenu,ElIcon,ElRow} from "element-plus"
-import { routes0 } from "@/router";
+import {
+  ElMenu, ElMenuItem, ElSubMenu, ElIcon, ElRow,
+} from "element-plus";
 import {
   Location,
   Document,
   Menu as IconMenu,
   Setting,
 } from "@element-plus/icons-vue";
-import { ref } from "vue";
-import { watchEffect } from "vue";
+import { ref, watchEffect } from "vue";
+
 import { useRoute, useRouter } from "vue-router";
+import { routes0 } from "@/router";
 
 const $route = useRoute();
 const $router = useRouter();
-let active = ref('/')
+const active = ref("/");
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath);
 };
@@ -73,17 +75,16 @@ const handleClose = (key: string, keyPath: string[]) => {
   console.log(key, keyPath);
 };
 const clickMenuItem = (item) => {
-  console.log("ckickMenuItem:" + item.path);
+  console.log(`ckickMenuItem:${item.path}`);
   if (item.children) return;
   $router.push({
     name: item.name,
   });
 };
 
-
-watchEffect(()=>{
+watchEffect(() => {
   active.value = $route.meta.uuid as string;
-})
+});
 </script>
 
 <style>

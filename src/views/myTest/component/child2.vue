@@ -3,9 +3,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, defineExpose } from "vue";
 
-let aaa = ref(1);
+const aaa = ref(1);
 defineExpose({
   aaa,
 });

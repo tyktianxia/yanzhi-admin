@@ -6,9 +6,12 @@
 <script setup>
 import { useRouter } from "vue-router";
 import { onMounted, ref } from "vue";
-import { ElButton, ElForm, ElInput, ElFormItem } from "element-plus";
-let $router = useRouter();
-let tarRef = ref();
+import {
+  ElButton, ElForm, ElInput, ElFormItem,
+} from "element-plus";
+
+const $router = useRouter();
+const tarRef = ref();
 
 const btnclick = () => {
   $router.push({

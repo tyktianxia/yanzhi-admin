@@ -1,13 +1,17 @@
 module.exports = {
   root: true,
-  globals: {
-    defineEmits: "readonly",
-    defineProps: "readonly",
+  env: {
+    browser: true,
+    node: true,
+    es6: true,
   },
-  extends: ["plugin:@typescript-eslint/recommended", "plugin:vue/vue3-recommended", "airbnb-base"],
+  extends: [
+    "plugin:vue/essential", //基本配置，自带 针对.vue文件
+    "plugin:vue/strongly-recommended", //强烈推荐  手动增加 针对 .vue文件
+    "eslint:recommended", //eslint 基本配置  针对 js
+  ],
   parserOptions: {
-    parser: "@typescript-eslint/parser",
-    ecmaVersion: 2020,
+    parser: "babel-eslint",
   },
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
@@ -34,7 +38,7 @@ module.exports = {
     // 1.4 关闭强制使用全等 http://eslint.cn/docs/rules/eqeqeq
     eqeqeq: [0],
 
-    // 2.1 template 属性折行 warn 单行超过5个就自动折行 【自动fix】
+    //2.1 template 属性折行 warn 单行超过5个就自动折行 【自动fix】
     "vue/max-attributes-per-line": [
       1,
       {
@@ -105,7 +109,7 @@ module.exports = {
           "EVENTS",
           "CONTENT",
         ],
-        alphabetical: false, // 关闭按字母顺序
+        alphabetical: false, //关闭按字母顺序
       },
     ],
     //  关闭 prop属性强制需要默认值
@@ -124,15 +128,14 @@ module.exports = {
     "no-unused-vars": [
       1,
       {
-        vars: "all", // 检测所有变量
-        args: "none", // 参数未使用，可不检测
-        caughtErrors: "none", // 不检测catch中的
+        vars: "all", //检测所有变量
+        args: "none", //参数未使用，可不检测
+        caughtErrors: "none", //不检测catch中的
         // argsIgnorePattern:'^_',//忽略_开头的
       },
     ],
     "no-useless-catch": [0],
     "no-inner-declarations": [0], // 函数申明可以放在函数的最下方
-    "no-useless-escape": [0],
     "require-atomic-updates": [0],
     "key-spacing": [1], // 强制在对象字面量的属性中键和值之间使用一致的间距
     "keyword-spacing": [1], // 关键字前后必须空格

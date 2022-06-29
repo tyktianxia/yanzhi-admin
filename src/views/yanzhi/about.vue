@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <!-- <MDIndex></MDIndex> -->
-        回头望，看山。
-    </div>
+  <div>
+    <!-- <MDIndex></MDIndex> -->
+    回头望，看山。
+  </div>
 </template>
 
 <script setup lang="ts">

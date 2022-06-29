@@ -28,15 +28,16 @@
           size="small"
           type="danger"
           @click="handleDelete(scope.$index, scope.row)"
-          >Delete</el-button
         >
+          Delete
+        </el-button>
       </template>
     </el-table-column>
   </el-table>
   <ElPagination
+    v-model:current-page="pageData.paginate.currentPage"
     background
     layout="prev, pager, next"
-    v-model:current-page="pageData.paginate.currentPage"
     :page-size="pageData.paginate.pageSize"
     :total="pageData.paginate.total"
     @current-change="currentChange"
@@ -102,9 +103,9 @@ import { get, post } from "@/utils/request";
 import { getApiUrl } from "@/utils/api";
 
 const pageData = reactive({
-  formData:{
-  userName: "",
-  iphone: "",
+  formData: {
+    userName: "",
+    iphone: "",
   },
   tableData: [],
   tableData2: [],
@@ -137,7 +138,7 @@ const userFormRef = ref();
 
 const search = async () => {
   try {
-    let res = await get(getApiUrl("getUserList"));
+    const res = await get(getApiUrl("getUserList"));
     console.log("userslist", res);
     pageData.tableData2 = res;
     handlePaginate();
@@ -163,7 +164,7 @@ function cancel() {
 const confirm = async () => {
   await userFormRef.value.validate(async (valid, fields) => {
     if (valid) {
-      let user = pageData.userForm.form;
+      const user = pageData.userForm.form;
       if (!user.id) {
         try {
           await post(getApiUrl("addUser"), user);
@@ -187,7 +188,7 @@ const handleDelete = (index, row) => {
     type: "warning",
   }).then(async () => {
     try {
-      await post(getApiUrl("deleteUser") + "/" + row.id);
+      await post(`${getApiUrl("deleteUser")}/${row.id}`);
       ElMessage.success("操作成功");
       await search();
     } catch (error) {
@@ -201,7 +202,7 @@ const handlePaginate = () => {
   currentChange();
 };
 const currentChange = () => {
-  let { currentPage, pageSize } = pageData.paginate;
+  const { currentPage, pageSize } = pageData.paginate;
   pageData.tableData = pageData.tableData2.slice(
     (currentPage - 1) * pageSize,
     currentPage * pageSize

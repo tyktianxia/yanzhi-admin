@@ -22,11 +22,11 @@
 </template>
 
 <script>
-import routes from "@/router/routes";
 import {
   Location,
   Document,
   Menu as IconMenu,
   Setting,
 } from "@element-plus/icons-vue";
+import routes from "@/router/routes";
 </script>

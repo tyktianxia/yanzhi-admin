@@ -5,8 +5,8 @@
         <p ref="testRef" class="yz_form_title">Login Page</p>
         <ElFormItem prop="userName">
           <el-input
-            class="yz_form_input"
             v-model="form.userName"
+            class="yz_form_input"
             placeholder="请输入用户名"
             :prefix-icon="User"
             clearable
@@ -14,8 +14,8 @@
         </ElFormItem>
         <ElFormItem prop="passward">
           <el-input
-            class="yz_form_input"
             v-model="form.passward"
+            class="yz_form_input"
             placeholder="请输入密码"
             :prefix-icon="Lock"
             clearable
@@ -24,10 +24,11 @@
         <ElButton
           type="primary"
           class="yz_form_button"
-          @click="toLogin"
           :loading="btnLoading"
-          >登录</ElButton
+          @click="toLogin"
         >
+          登录
+        </ElButton>
       </ElForm>
     </div>
   </div>
@@ -35,15 +36,17 @@
 
 <script setup>
 // import type { FormInstance } from 'element-plus'
-import { ElButton, ElForm, ElInput, ElFormItem, ElMessage } from "element-plus";
+import {
+  ElButton, ElForm, ElInput, ElFormItem, ElMessage,
+} from "element-plus";
 import { Lock, User } from "@element-plus/icons-vue";
 import { useRouter } from "vue-router";
-import { Common } from "@/store/common";
 import { ref, reactive } from "vue";
+import { Common } from "@/store/common";
 import { get, post } from "@/utils/request";
 import { getApiUrl } from "@/utils/api";
 
-let $router = useRouter();
+const $router = useRouter();
 const CommonStore = Common();
 
 const btnLoading = ref(false);
@@ -57,7 +60,7 @@ const rules = reactive({
   passward: [{ required: true, message: "请输入登录密码", trigger: "blur" }],
 });
 
-let toLogin = async () => {
+const toLogin = async () => {
   // fields 错误信息
   await loginFormRef.value.validate(async (valid, fields) => {
     if (valid) {

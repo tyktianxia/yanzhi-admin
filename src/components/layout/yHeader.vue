@@ -8,31 +8,31 @@
 </template>
 
 <script lang="ts" setup>
-import { ElHeader } from "element-plus";
-import { ElMessage, ElMessageBox } from 'element-plus'
+import { ElHeader, ElMessage, ElMessageBox } from "element-plus";
+
 import { useRouter } from "vue-router";
 import { Common } from "@/store/common";
 import { Test } from "@/store/test";
 
-let $router = useRouter();
+const $router = useRouter();
 const CommonStore = Common();
 const TestStore = Test();
 
-let toLogout = () => {
+const toLogout = () => {
   ElMessageBox.confirm(
-    '是否确认退出登录?',
-    '提示',
+    "是否确认退出登录?",
+    "提示",
     {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
-      type: 'warning',
+      confirmButtonText: "确定",
+      cancelButtonText: "取消",
+      type: "warning",
     }
   )
     .then(() => {
       CommonStore.setUserInfo({});
-      console.log('logout', TestStore.testData)
+      console.log("logout", TestStore.testData);
       $router.push("/login");
-    })
+    });
 };
 </script>
 

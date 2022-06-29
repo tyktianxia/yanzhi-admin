@@ -20,7 +20,9 @@
 </template>
 
 <script lang="ts" setup>
-import { ElContainer, ElFooter, ElMain, ElHeader, ElAside } from "element-plus";
+import {
+  ElContainer, ElFooter, ElMain, ElHeader, ElAside,
+} from "element-plus";
 import yHeaderVue from "@/components/layout/yHeader.vue";
 import yMainVue from "@/components/layout/yMain.vue";
 import yAsideVue from "@/components/layout/yAside.vue";

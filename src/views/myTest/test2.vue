@@ -10,16 +10,17 @@
 </template>
 
 <script setup lang="ts">
-import { isProxy, isReactive, isRef, reactive, Ref, shallowReactive, shallowRef, toRefs, watchEffect } from "vue";
-import { ref } from "vue";
+import {
+  isProxy, isReactive, isRef, reactive, Ref, shallowReactive, shallowRef, toRefs, watchEffect, 
+, ref } from "vue";
 import Child from "./component/child.vue";
 import Child2 from "./component/child2.vue";
 import Child3 from "./component/child3.vue";
 
-import {ElButton} from "element-plus"
+import { ElButton } from "element-plus";
 
 
-let arr = [
+const arr = [
   {
     name: "t1",
   },
@@ -27,32 +28,31 @@ let arr = [
     name: "t2",
   },
 ];
-let cardList = reactive(arr);
+const cardList = reactive(arr);
 const clickBtn = (name: string) => {
   console.log(name);
 };
 const state0 = reactive({
   age: 1,
-  obj:{
-    name:'456'
-  }
+  obj: {
+    name: "456",
+  },
 });
 
-let state1 = toRefs(state0)
+const state1 = toRefs(state0);
 
-let oo = shallowRef(6)
+const oo = shallowRef(6);
 
-oo.value++
-console.log(oo.value)
+oo.value++;
+console.log(oo.value);
 
-let testHtml = "<button onclick='testHtmlClick'>testHtml</button>"
-function testHtmlClick(){
-console.log('testHtmlButton')
+const testHtml = "<button onclick='testHtmlClick'>testHtml</button>";
+function testHtmlClick() {
+  console.log("testHtmlButton");
 }
 
-function testFather(){
-  
-console.log('testFather')
+function testFather() {
+console.log("testFather");
 }
 
 </script>

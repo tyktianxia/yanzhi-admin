@@ -8,10 +8,10 @@ import { onMounted } from "@vue/runtime-core";
 
 onMounted(() => {
   fun1();
-  echartInit()
+  echartInit();
 });
-let arr0:number[] = [1,2,3,4,5,]
-let arr:Array<number> = [1,2,4,5,]
+const arr0:number[] = [1, 2, 3, 4, 5];
+const arr:Array<number> = [1, 2, 4, 5];
 </script>
 
 <script lang="ts">
@@ -19,8 +19,8 @@ function fun1() {
   console.log("script fun1");
 }
 function echartInit() {
-  var myChart = echarts.init(document.getElementById("echarts1"));
-  var option = {
+  const myChart = echarts.init(document.getElementById("echarts1"));
+  const option = {
     title: {
       text: "ECharts 入门示例",
     },
