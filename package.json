@@ -47,6 +47,9 @@
       "pre-commit": "npm run lint:prettier"
     }
   },
+  "gitHooks": {
+    "pre-commit": "npm run lint:prettier"
+  },
   "lint-staged": {
     "*.{js,vue,jsx,tsx}": [
       "git add"
