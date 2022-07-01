@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts"    setup>
-import { useRoute }   from "vue-router";
+import { useRoute }    from "vue-router";
 import { onMounted, reactive } from "vue";
 import yanzhiVue from "./views/yanzhi.vue";
 
