@@ -5,14 +5,14 @@
   </div>
 </template>
 
-<script lang="ts"    setup>
-import { useRoute }    from "vue-router";
+<script lang="ts" setup>
+import { useRoute } from "vue-router";
 import { onMounted, reactive } from "vue";
 import yanzhiVue from "./views/yanzhi.vue";
 
 const route =  useRoute();
 
-const whitePaths = reactive(["/", "/login"]);
+const whitePaths = reactive( ["/", "/login"]);
 
 onMounted(() => {
   console.log("app mounted");
