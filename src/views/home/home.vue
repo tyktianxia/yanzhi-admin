@@ -1,6 +1,7 @@
 <template>
-  <div ref="tarRef">yahaha</div>
-  <button @click="btnclick">click</button>
+  <!-- <div ref="tarRef">yahaha</div>
+  <button @click="btnclick">click</button> -->
+  <p>我看青山多妩媚，料青山看我应如是</p>
 </template>
 
 <script setup>
