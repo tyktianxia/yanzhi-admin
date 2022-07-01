@@ -11,7 +11,8 @@
     "lint:fix": "eslint . --ext .ts,js,tsx,jsx,vue --fix",
     "test": "node index.js",
     "lint:prettier": "prettier --write src/",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint:lint-staged": "lint-staged"
   },
   "dependencies": {
     "@sentry/tracing": "^6.19.6",
@@ -39,6 +40,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.2.0",
     "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "prettier": "2.7.1",
     "vite": "^2.8.0"
   },
@@ -48,8 +50,11 @@
     }
   },
   "lint-staged": {
-    "*.{js,vue,jsx,tsx}": [
-      "git add"
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write"
+    ],
+    "*.vue": [
+      "prettier --write"
     ]
   }
 }
