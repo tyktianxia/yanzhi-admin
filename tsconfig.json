@@ -9,7 +9,7 @@
     "allowSyntheticDefaultImports": true,
     "strictFunctionTypes": false,
     "jsx": "preserve",
-    "baseUrl": ".",
+    "baseUrl": "./",
     "allowJs": true,
     "sourceMap": true,
     "esModuleInterop": true,
@@ -23,8 +23,7 @@
     "types": ["vite/client", "element-plus/global"],
     "removeComments": true,
     "paths": {
-      "/@/*": ["src/*"],
-      "/#/*": ["types/*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": [
