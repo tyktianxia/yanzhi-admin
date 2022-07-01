@@ -2,5 +2,6 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 npm run lint:lint-staged
+lint-staged
 
-git add .
+# git add .
