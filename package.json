@@ -10,7 +10,7 @@
     "lint": "eslint . --ext .ts,js,tsx,jsx,vue",
     "lint:fix": "eslint . --ext .ts,js,tsx,jsx,vue --fix",
     "test": "node index.js",
-    "lint:prettier": "prettier --write"
+    "lint:prettier": "prettier --write src/"
   },
   "dependencies": {
     "@sentry/tracing": "^6.19.6",
