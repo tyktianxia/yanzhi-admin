@@ -44,11 +44,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint:prettier"
+      "pre-commit": "yarn lint:prettier"
     }
-  },
-  "gitHooks": {
-    "pre-commit": "npm run lint:prettier"
   },
   "lint-staged": {
     "*.{js,vue,jsx,tsx}": [
