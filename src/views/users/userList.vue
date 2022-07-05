@@ -57,10 +57,9 @@
   </ElDialog>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ElForm, ElFormItem, ElTable, ElTableColumn, ElInput, ElButton, ElPagination, ElMessage, ElMessageBox, ElDialog } from "element-plus";
 import { reactive, ref } from "vue";
-import dayjs from "dayjs";
 import { get, post } from "@/utils/request";
 import { getApiUrl } from "@/utils/api";
 
@@ -124,7 +123,7 @@ function cancel() {
   reset();
 }
 const confirm = async () => {
-  await userFormRef.value.validate(async (valid, fields) => {
+  await userFormRef.value.validate(async (valid: any) => {
     if (valid) {
       const user = pageData.userForm.form;
       if (!user.id) {

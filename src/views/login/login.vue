@@ -15,14 +15,14 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 // import type { FormInstance } from 'element-plus'
 import { ElButton, ElForm, ElInput, ElFormItem, ElMessage } from "element-plus";
 import { Lock, User } from "@element-plus/icons-vue";
 import { useRouter } from "vue-router";
 import { ref, reactive } from "vue";
 import { Common } from "@/store/common";
-import { get, post } from "@/utils/request";
+import { post } from "@/utils/request";
 import { getApiUrl } from "@/utils/api";
 
 const $router = useRouter();

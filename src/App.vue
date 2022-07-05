@@ -19,4 +19,8 @@ onMounted(() => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+div {
+  color: antiquewhite;
+}
+</style>

@@ -10,9 +10,6 @@ console.log(props.testHtml);
 
 <script lang="ts">
 export default {
-  // mounted(){
-  //   console.log(props.testHtml)
-  // },
   props: {
     testHtml: {
       type: String,

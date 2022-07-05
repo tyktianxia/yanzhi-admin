@@ -12,12 +12,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+// import { ref } from "vue";
 import { ElButton, ElTable, ElTableColumn, ElLoading } from "element-plus";
 
 import Child1 from "./components/child1.vue";
 
-const loading = ref(true);
+// const loading = ref(true);
 function click1() {
   const loadingInstance1 = ElLoading.service({ fullscreen: true });
   setTimeout(() => {
