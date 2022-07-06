@@ -1,6 +1,5 @@
 <template>
   <div class="form_contain">
-    <h1 v-if="moodStatus !== 0">{{ moodStatus == 1 ? "开心" : "低落" }}</h1>
     <div class="yz_form">
       <ElForm ref="loginFormRef" :model="form" :rules="rules">
         <p class="yz_form_title">Login Page</p>
@@ -8,7 +7,7 @@
           <el-input v-model="form.userName" class="yz_form_input" placeholder="请输入用户名" :prefix-icon="User" clearable />
         </ElFormItem>
         <ElFormItem prop="passward">
-          <el-input v-model="form.passward" class="yz_form_input" placeholder="请输入密码" :prefix-icon="Lock" clearable />
+          <el-input v-model="form.passward" type="password" class="yz_form_input" placeholder="请输入密码" :prefix-icon="Lock" show-password />
         </ElFormItem>
         <ElButton type="primary" class="yz_form_button" :loading="btnLoading" @click="toLogin()"> 登录 </ElButton>
       </ElForm>
@@ -40,7 +39,6 @@ const rules = reactive({
   userName: [{ required: true, message: "请输入用户名", trigger: "blur" }],
   passward: [{ required: true, message: "请输入登录密码", trigger: "blur" }],
 });
-const moodStatus = ref<number>(0);
 
 const toLogin = async () => {
   if (!loginFormRef.value) return;
@@ -65,19 +63,6 @@ const toLogin = async () => {
     }
   });
 };
-
-// let setData = (str: string) => {
-//   let arr = str.split("?")[1]?.split("&");
-//   if (arr) {
-//     let result = arr.reduce((obj, item) => {
-//       let arr4 = item.split("=");
-//       obj[arr4[0]] = arr4[1];
-//       return obj;
-//     }, {} as UserInfo);
-
-//     CommonStore.setUserInfo(result);
-//   }
-// };
 </script>
 
 <style>

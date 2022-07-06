@@ -18,9 +18,3 @@ onMounted(() => {
   console.log("app mounted");
 });
 </script>
-
-<style scoped>
-div {
-  color: antiquewhite;
-}
-</style>
