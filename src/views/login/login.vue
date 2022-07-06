@@ -1,35 +1,37 @@
 <template>
   <div class="form_contain">
+    <h1 v-if="moodStatus !== 0">{{ moodStatus == 1 ? "开心" : "低落" }}</h1>
     <div class="yz_form">
       <ElForm ref="loginFormRef" :model="form" :rules="rules">
-        <p ref="testRef" class="yz_form_title">Login Page</p>
+        <p class="yz_form_title">Login Page</p>
         <ElFormItem prop="userName">
           <el-input v-model="form.userName" class="yz_form_input" placeholder="请输入用户名" :prefix-icon="User" clearable />
         </ElFormItem>
         <ElFormItem prop="passward">
           <el-input v-model="form.passward" class="yz_form_input" placeholder="请输入密码" :prefix-icon="Lock" clearable />
         </ElFormItem>
-        <ElButton type="primary" class="yz_form_button" :loading="btnLoading" @click="toLogin"> 登录 </ElButton>
+        <ElButton type="primary" class="yz_form_button" :loading="btnLoading" @click="toLogin()"> 登录 </ElButton>
       </ElForm>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-// import type { FormInstance } from 'element-plus'
 import { ElButton, ElForm, ElInput, ElFormItem, ElMessage } from "element-plus";
 import { Lock, User } from "@element-plus/icons-vue";
+import type { FormInstance } from "element-plus";
 import { useRouter } from "vue-router";
 import { ref, reactive } from "vue";
 import { Common } from "@/store/common";
 import { post } from "@/utils/request";
 import { getApiUrl } from "@/utils/api";
+import type { axiosError } from "@/types/global";
 
 const $router = useRouter();
 const CommonStore = Common();
 
 const btnLoading = ref(false);
-const loginFormRef = ref(null);
+const loginFormRef = ref<FormInstance>();
 const form = reactive({
   userName: "",
   passward: "",
@@ -38,9 +40,10 @@ const rules = reactive({
   userName: [{ required: true, message: "请输入用户名", trigger: "blur" }],
   passward: [{ required: true, message: "请输入登录密码", trigger: "blur" }],
 });
+const moodStatus = ref<number>(0);
 
 const toLogin = async () => {
-  // fields 错误信息
+  if (!loginFormRef.value) return;
   await loginFormRef.value.validate(async (valid, fields) => {
     if (valid) {
       console.log("校验成功，去登录!", fields);
@@ -56,7 +59,7 @@ const toLogin = async () => {
           },
         });
       } catch (error) {
-        ElMessage.error(error);
+        ElMessage.error((error as axiosError)?.message);
       }
       btnLoading.value = false;
     }

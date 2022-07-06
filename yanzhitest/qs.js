@@ -6,3 +6,8 @@ const str = qs.stringify({
   test3: 4444,
 });
 console.log(str);
+
+// ============================================
+console.log("++++++++++++++++++++++++++++++++++");
+console.log(module);
+console.log(require);
