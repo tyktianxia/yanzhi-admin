@@ -19,3 +19,18 @@
 //   }
 //   console.log(i)
 // }
+
+let test = new Promise((res, rej) => {
+  throw 123;
+})
+  .then(() => {
+    console.log("then");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+console.log(test);
+setTimeout(() => {
+  console.log(test);
+}, 0);

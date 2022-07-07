@@ -13,4 +13,14 @@
       <input type="submit" value="click" />
     </form>
   </body>
+  <script>
+    // async promise 最佳实践
+    async function fn1() {
+      throw 456;
+    }
+    async function fn2() {
+      await fn1();
+    }
+    fn2()
+  </script>
 </html>
