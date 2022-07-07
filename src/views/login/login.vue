@@ -20,7 +20,7 @@ import { ElButton, ElForm, ElInput, ElFormItem, ElMessage } from "element-plus";
 import { Lock, User } from "@element-plus/icons-vue";
 import type { FormInstance } from "element-plus";
 import { useRouter } from "vue-router";
-import { ref, reactive } from "vue";
+import { ref, reactive, onErrorCaptured, onMounted } from "vue";
 import { Common } from "@/store/common";
 import { post } from "@/utils/request";
 import { getApiUrl } from "@/utils/api";
@@ -44,7 +44,7 @@ const toLogin = async () => {
   if (!loginFormRef.value) return;
   await loginFormRef.value.validate(async (valid, fields) => {
     if (valid) {
-      console.log("校验成功，去登录!", fields);
+      console.log("校验成功，去登录!", valid);
       btnLoading.value = true;
       try {
         await post(getApiUrl("login"), form);
@@ -58,8 +58,9 @@ const toLogin = async () => {
         });
       } catch (error) {
         ElMessage.error((error as axiosError)?.message);
+      } finally {
+        btnLoading.value = false;
       }
-      btnLoading.value = false;
     }
   });
 };

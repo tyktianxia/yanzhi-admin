@@ -36,6 +36,14 @@ app.config.globalProperties.$echarts = echarts;
 //     tracesSampleRate: 1.0,
 // });
 
+// 来处理组件渲染函数和侦听器执行期间抛出的未捕获错误
+app.config.errorHandler = (err, vm, info) => {
+  console.log("======================================= errorHandler: =======================================");
+  console.error(err);
+  console.log("info: ", info);
+  console.log("======================================= errorHandler: =======================================");
+};
+
 // 挂载全局自定义指令
 createDirectives(app);
 

@@ -7,7 +7,7 @@
 
 <script lang="ts" setup>
 import { useRoute } from "vue-router";
-import { onMounted, reactive } from "vue";
+import { onMounted, reactive, onErrorCaptured } from "vue";
 import yanzhiVue from "./views/yanzhi.vue";
 
 const route = useRoute();
@@ -16,5 +16,8 @@ const whitePaths = reactive(["/", "/login"]);
 
 onMounted(() => {
   console.log("app mounted");
+});
+onErrorCaptured((err, instance, info) => {
+  console.log("errorCaptured: info: ", info);
 });
 </script>
