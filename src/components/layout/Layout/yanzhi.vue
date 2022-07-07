@@ -2,12 +2,12 @@
   <div class="common-layout">
     <el-container>
       <el-header>
-        <yHeaderVue></yHeaderVue>
+        <Header></Header>
       </el-header>
       <div class="subContainer">
         <el-container>
           <el-aside width="240px">
-            <YanzhiAside></YanzhiAside>
+            <Aside></Aside>
           </el-aside>
           <el-main>
             <router-view></router-view>
@@ -21,8 +21,8 @@
 
 <script lang="ts" setup>
 import { ElContainer, ElMain, ElHeader, ElAside } from "element-plus";
-import yHeaderVue from "@/components/layout/yHeader.vue";
-import YanzhiAside from "@/components/layout/yanzhi-aside.vue";
+import Header from "@/components/layout/Header/index.vue";
+import Aside from "@/components/layout/Aside/index.vue";
 </script>
 
 <style scoped></style>

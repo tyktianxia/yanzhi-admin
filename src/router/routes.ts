@@ -12,7 +12,7 @@ export const someRoutes: RouteRecordRaw[] = [
   {
     path: "/login",
     name: "login",
-    component: () => import("@/views/login/login.vue"),
+    component: () => import("@/views/login/index.vue"),
     meta: {
       icon: 1,
       showFlag: false,
@@ -38,7 +38,7 @@ export const someRoutes: RouteRecordRaw[] = [
       showFlag: true,
       uuid: uuidv4(),
     },
-    component: () => import("@/components/layout/yLayout.vue"),
+    component: () => import("@/components/layout/Layout/index.vue"),
     children: [
       {
         path: "one",
@@ -71,7 +71,7 @@ export const someRoutes: RouteRecordRaw[] = [
       showFlag: true,
       uuid: uuidv4(),
     },
-    component: () => import("@/components/layout/yLayout.vue"),
+    component: () => import("@/components/layout/Layout/index.vue"),
     children: [
       {
         path: "test1",
@@ -104,7 +104,7 @@ export const someRoutes: RouteRecordRaw[] = [
       showFlag: true,
       uuid: uuidv4(),
     },
-    component: () => import("@/components/layout/yLayout.vue"),
+    component: () => import("@/components/layout/Layout/index.vue"),
     children: [
       {
         path: "echarts1",
@@ -127,7 +127,7 @@ export const someRoutes: RouteRecordRaw[] = [
       showFlag: true,
       uuid: uuidv4(),
     },
-    component: () => import("@/components/layout/yLayout.vue"),
+    component: () => import("@/components/layout/Layout/index.vue"),
     children: [
       {
         path: "userList",

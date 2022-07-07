@@ -1,14 +1,14 @@
 <template>
   <div v-if="route.path">
     <router-view v-if="whitePaths.includes(route.path)"></router-view>
-    <yanzhiVue v-else></yanzhiVue>
+    <Layout v-else></Layout>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { useRoute } from "vue-router";
 import { onMounted, reactive, onErrorCaptured } from "vue";
-import yanzhiVue from "./views/yanzhi.vue";
+import Layout from "@/components/layout/Layout/yanzhi.vue";
 
 const route = useRoute();
 
