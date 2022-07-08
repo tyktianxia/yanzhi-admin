@@ -3,11 +3,12 @@
     <el-menu :default-active="active" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
       <template v-for="item in routes0">
         <template v-if="!item.children">
-          <el-menu-item :index="item.meta.uuid || item.path" @click="clickMenuItem(item)">
+          <el-menu-item :index="item.path" @click="clickMenuItem(item)">
             <el-icon><location /></el-icon>
             <span>{{ item.name }}</span>
           </el-menu-item>
         </template>
+
         <template v-else>
           <el-sub-menu :index="item.meta.uuid || item.path">
             <template #title>
@@ -52,6 +53,7 @@ import { routes0 } from "@/router";
 const $route = useRoute();
 const $router = useRouter();
 const active = ref("/");
+
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath);
 };
