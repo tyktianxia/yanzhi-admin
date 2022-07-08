@@ -59,4 +59,4 @@ router.afterEach(() => {});
 export default router;
 
 const routes0 = handler(routes);
-export { routes0 };
+export { router, routes0 };

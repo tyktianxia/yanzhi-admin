@@ -1,4 +1,4 @@
 <template>
-  <!-- 以备后用 -->
+  <!-- 有用 -->
   <router-view></router-view>
 </template>

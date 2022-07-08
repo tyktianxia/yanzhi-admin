@@ -23,3 +23,15 @@ class Son extends Father {
 const son = new Son();
 son.fn2();
 son.fn1();
+
+class Person {
+  name;
+  constructor(name) {
+    this.name = name;
+  }
+  speak() {
+    console.log(`${this.name} is speaking`);
+  }
+}
+
+const p1 = new Person("lin");
