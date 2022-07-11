@@ -11,6 +11,7 @@ import "./assets/element-reset.css";
 
 // 导入全部element样式，element采用手动引入
 import "element-plus/dist/index.css";
+import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 import store from "@/store/index";
 import router from "./router/index";
 
@@ -43,6 +44,11 @@ app.config.errorHandler = (err, vm, info) => {
   console.log("info: ", info);
   console.log("======================================= errorHandler: =======================================");
 };
+
+// 注册所有element图标
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component);
+}
 
 // 挂载全局自定义指令
 createDirectives(app);

@@ -1,57 +1,20 @@
 <template>
-  <el-row class="tac">
+  <div class="tac">
     <el-menu :default-active="active" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
-      <template v-for="item in routes0">
-        <template v-if="!item.children">
-          <el-menu-item :index="item.path" @click="clickMenuItem(item)">
-            <el-icon><location /></el-icon>
-            <span>{{ item.name }}</span>
-          </el-menu-item>
-        </template>
-
-        <template v-else>
-          <el-sub-menu :index="item.meta.uuid || item.path">
-            <template #title>
-              <el-icon><location /></el-icon>
-              <span>{{ item.name }}</span>
-            </template>
-            <template v-for="jtem in item.children">
-              <template v-if="!jtem.children">
-                <el-menu-item :index="jtem.meta.uuid || jtem.path" @click="clickMenuItem(jtem)">
-                  <span>{{ jtem.name }}</span>
-                </el-menu-item>
-              </template>
-              <template v-else>
-                <el-sub-menu :index="jtem.meta.uuid || jtem.path">
-                  <template #title>
-                    <el-icon><location /></el-icon>
-                    <span>{{ jtem.name }}</span>
-                  </template>
-                  <template v-for="ztem in jtem.children">
-                    <el-menu-item v-if="!ztem.children" :index="ztem.meta.uuid || ztem.path" @click="clickMenuItem(ztem)">
-                      <span>{{ ztem.name }}</span>
-                    </el-menu-item>
-                  </template>
-                </el-sub-menu>
-              </template>
-            </template>
-          </el-sub-menu>
-        </template>
-      </template>
+      <asideMenuVue :routes="routes0"></asideMenuVue>
     </el-menu>
-  </el-row>
+  </div>
 </template>
 
 <script lang="ts" setup>
-import { ElMenu, ElMenuItem, ElSubMenu, ElIcon, ElRow } from "element-plus";
-import { Location, Document, Menu as IconMenu, Setting } from "@element-plus/icons-vue";
+import { ElMenu } from "element-plus";
 import { ref, watchEffect } from "vue";
 
-import { useRoute, useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 import { routes0 } from "@/router";
+import asideMenuVue from "./components/aside-menu.vue";
 
 const $route = useRoute();
-const $router = useRouter();
 const active = ref("/");
 
 const handleOpen = (key: string, keyPath: string[]) => {
@@ -60,16 +23,10 @@ const handleOpen = (key: string, keyPath: string[]) => {
 const handleClose = (key: string, keyPath: string[]) => {
   console.log(key, keyPath);
 };
-const clickMenuItem = (item) => {
-  console.log(`ckickMenuItem:${item.path}`);
-  if (item.children) return;
-  $router.push({
-    name: item.name,
-  });
-};
 
 watchEffect(() => {
-  active.value = $route.meta.uuid as string;
+  console.log("$route.path:", $route.path);
+  active.value = ($route?.meta?.uuid as string) ?? $route.path;
 });
 </script>
 

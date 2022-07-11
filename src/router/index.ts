@@ -1,10 +1,10 @@
 import * as VueRouter from "vue-router";
 import { RouteRecordRaw } from "vue-router";
 import { Common } from "@/store/common";
+import { v4 as uuidv4 } from "uuid";
 
 import { baseRoutes } from "./base";
 import { someRoutes } from "./routes";
-
 const routes = [...someRoutes, ...baseRoutes];
 
 const router = VueRouter.createRouter({
@@ -15,18 +15,21 @@ const router = VueRouter.createRouter({
 
 // 处理routes生成侧边栏菜单，
 // TODO:排序
-function handler(routes: RouteRecordRaw[]): RouteRecordRaw[] {
-  // let tarRoutes = routes.forEach(item=>{
-  //   item.meta.uuid = uuidv4()
-  // })
+function handlerRoutes(routes: RouteRecordRaw[]): RouteRecordRaw[] {
   return routes.filter((item) => {
-    if (!item.meta?.showFlag) {
+    if (!item?.meta) {
+      item.meta = {};
+    }
+    if (item.meta?.noMenuFlag) {
       return false;
     }
-    if (!item.children) {
-      return true;
+    if (!item.meta?.icon) {
+      item.meta.icon = "Menu";
     }
-    handler(item.children);
+    if (item.children) {
+      handlerRoutes(item.children);
+    }
+    item.meta.uuid = uuidv4() as string;
     return true;
   });
 }
@@ -58,5 +61,5 @@ router.beforeEach((to, from, next) => {
 router.afterEach(() => {});
 export default router;
 
-const routes0 = handler(routes);
+const routes0 = handlerRoutes(routes);
 export { router, routes0 };

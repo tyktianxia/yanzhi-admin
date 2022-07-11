@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
 import { RouteRecordRaw } from "vue-router";
 
 export const baseRoutes: RouteRecordRaw[] = [
@@ -7,14 +6,14 @@ export const baseRoutes: RouteRecordRaw[] = [
     name: "ABOUT",
     component: () => import("@/views/yanzhi/about.vue"),
     meta: {
-      icon: 1,
-      showFlag: true,
-      uuid: uuidv4(),
+      icon: "Help",
     },
   },
   {
     path: "/:pathMatch(.*)",
     component: () => import("@/views/yanzhi/404.vue"),
-    meta: {},
+    meta: {
+      noMenuFlag: true,
+    },
   },
 ];
