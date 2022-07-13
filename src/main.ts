@@ -1,22 +1,28 @@
+// 原始块++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ //
 import { createApp } from "vue";
+import * as echarts from "echarts";
+import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 
-import App from "./App.vue";
+// css块++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ //
 import "normalize.css";
 import "./assets/common.css";
-import * as echarts from "echarts";
 import "./assets/element-reset.css";
-
+// 导入全部element样式，element采用手动引入
+import "element-plus/dist/index.css";
+// 引入iconfont
+import "./assets/icon/iconfont.js";
+// sentry 暂时注释
 // import * as Sentry from "@sentry/vue";
 // import { BrowserTracing } from "@sentry/tracing";
 
-// 导入全部element样式，element采用手动引入
-import "element-plus/dist/index.css";
-import * as ElementPlusIconsVue from "@element-plus/icons-vue";
+// 自定义块++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ //
+import App from "./App.vue";
 import store from "@/store/index";
 import router from "./router/index";
-
 import { createDirectives } from "./directives/index";
+import baseSvg from "@/components/base-svg/index.vue";
 
+// 构建++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ //
 const app = createApp(App);
 
 app.config.globalProperties.$echarts = echarts;
@@ -49,6 +55,8 @@ app.config.errorHandler = (err, vm, info) => {
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component);
 }
+// 全局注册baseSvg组件
+app.component("baseSvg", baseSvg);
 
 // 挂载全局自定义指令
 createDirectives(app);

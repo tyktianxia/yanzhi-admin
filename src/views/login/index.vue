@@ -9,7 +9,11 @@
         <ElFormItem prop="passward">
           <el-input v-model="form.passward" type="password" class="yz_form_input" placeholder="请输入密码" :prefix-icon="Lock" show-password />
         </ElFormItem>
-        <ElButton type="primary" class="yz_form_button" :loading="btnLoading" @click="toLogin()"> 登录 </ElButton>
+        <ElButton type="primary" class="yz_form_button" :loading="btnLoading" @click="toLogin()"> 登 录 </ElButton>
+        <hr />
+        <ElButton type="primary" class="yz_form_button iconfont icon-paofu"> 登 录 </ElButton>
+        <hr />
+        <p><base-svg name="icon-paofu-53"></base-svg>123</p>
       </ElForm>
     </div>
   </div>
