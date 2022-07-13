@@ -1,7 +1,7 @@
 <template>
   <div class="form_contain">
     <div class="yz_form">
-      <ElForm ref="loginFormRef" :model="form" :rules="rules">
+      <ElForm ref="loginFormRef" :model="form" :rules="rules" @keyup.enter="toLogin">
         <p class="yz_form_title">Login Page</p>
         <ElFormItem prop="userName">
           <el-input v-model="form.userName" class="yz_form_input" placeholder="请输入用户名" :prefix-icon="User" clearable />
@@ -9,11 +9,7 @@
         <ElFormItem prop="passward">
           <el-input v-model="form.passward" type="password" class="yz_form_input" placeholder="请输入密码" :prefix-icon="Lock" show-password />
         </ElFormItem>
-        <ElButton type="primary" class="yz_form_button" :loading="btnLoading" @click="toLogin()"> 登 录 </ElButton>
-        <hr />
-        <ElButton type="primary" class="yz_form_button iconfont icon-paofu"> 登 录 </ElButton>
-        <hr />
-        <p><base-svg name="icon-paofu-53"></base-svg>123</p>
+        <ElButton type="primary" class="yz_form_button" :loading="btnLoading" @dblclick="toLogin"> 登 录 </ElButton>
       </ElForm>
     </div>
   </div>

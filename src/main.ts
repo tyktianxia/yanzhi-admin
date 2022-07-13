@@ -21,6 +21,7 @@ import store from "@/store/index";
 import router from "./router/index";
 import { createDirectives } from "./directives/index";
 import baseSvg from "@/components/base-svg/index.vue";
+import baseIcon from "@/components/base-icon/index.vue";
 
 // 构建++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ //
 const app = createApp(App);
@@ -57,6 +58,7 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 }
 // 全局注册baseSvg组件
 app.component("baseSvg", baseSvg);
+app.component("baseIcon", baseIcon);
 
 // 挂载全局自定义指令
 createDirectives(app);

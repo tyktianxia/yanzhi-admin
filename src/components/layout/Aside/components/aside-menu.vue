@@ -2,7 +2,7 @@
   <template v-for="item in routes">
     <template v-if="!item.children">
       <el-menu-item :index="item?.meta?.uuid as string ?? item.path" @click="clickMenuItem(item)">
-        <el-icon><component :is="item?.meta?.icon ?? 'Menu'" /></el-icon>
+        <baseIcon :name="item?.meta?.icon ?? 'Menu'"></baseIcon>
         <span>{{ item.name }}</span>
       </el-menu-item>
     </template>
@@ -10,7 +10,7 @@
     <template v-else>
       <el-sub-menu :index="item?.meta?.uuid as string ?? item.path">
         <template #title>
-          <el-icon><component :is="item?.meta?.icon ?? 'Menu'" /></el-icon>
+          <baseIcon :name="item?.meta?.icon ?? 'Menu'"></baseIcon>
           <span>{{ item.name }}</span>
         </template>
         <asideMenuVue :routes="item.children"> </asideMenuVue>

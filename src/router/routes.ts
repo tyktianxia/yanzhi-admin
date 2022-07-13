@@ -20,7 +20,9 @@ export const someRoutes: RouteRecordRaw[] = [
     path: "/home",
     name: "HOME",
     component: () => import("../views/home/home.vue"),
-    meta: {},
+    meta: {
+      icon: "icon-icon-guanli",
+    },
   },
   {
     path: "/yanzhi",
@@ -70,7 +72,9 @@ export const someRoutes: RouteRecordRaw[] = [
     path: "/echarts",
     name: "图表",
     redirect: "/echarts/echarts1",
-    meta: {},
+    meta: {
+      icon: "icon-icon-shuju",
+    },
     component: () => import("@/components/layout/Layout/index.vue"),
     children: [
       {
@@ -85,7 +89,9 @@ export const someRoutes: RouteRecordRaw[] = [
     path: "/users",
     name: "用户",
     redirect: "/users/userList",
-    meta: {},
+    meta: {
+      icon: "Avatar",
+    },
     component: () => import("@/components/layout/Layout/index.vue"),
     children: [
       {

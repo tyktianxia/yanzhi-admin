@@ -6,7 +6,7 @@ export const baseRoutes: RouteRecordRaw[] = [
     name: "ABOUT",
     component: () => import("@/views/yanzhi/about.vue"),
     meta: {
-      icon: "Help",
+      icon: "icon-paofu-53",
     },
   },
   {
